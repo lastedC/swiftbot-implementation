@@ -63,6 +63,7 @@ public class drawShape {
                 }
             }
 
+            System.out.println("Current angle: " + currentAngle); // output for test purposes only
             int time = sideLength / 100;
 
             try {
