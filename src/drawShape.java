@@ -9,6 +9,8 @@ public class drawShape {
         if (!checkShape.checkSideLength(sideLength)) {
             System.out.println("The length provided is invalid. Pleae make sure it is between 15 and 85.");
             return;
+        } else {
+            System.out.println("Side lengths have been validated. Drawing square...");
         }
 
         for (int sidesDrawn = 0; sidesDrawn < 4; sidesDrawn++) {
