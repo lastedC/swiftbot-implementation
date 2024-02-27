@@ -1,108 +1,70 @@
+import java.awt.image.BufferedImage;
+
+import swiftbot.*;
+
 public class main {
-//    SwiftBotAPI API = new SwiftBotAPI();
+
+    static SwiftBotAPI swiftBot;
+
     public static void mainProcess(String[] args) {
 
-//      BufferedImage img = API.GetQRImage();
-//
-//      try{
-//          String decodedText = API.decodeQRImage(img);
-//          if (!decodedText.isEmpty()) {
-//              System.out.println(decodedText);
-//          }
-//      } catch(IllegalArgumentException e) {
-//          e.printStackTrace();
-//      }
+        try {
+            swiftBot = new SwiftBotAPI();
+        } catch (Exception e) {
+            System.out.println("Error loading API" + e.getMessage());
+        };
 
-      if (decodedText.isEmpty()) {
-         System.err.println("No decoded text");
-      }
+        // Continously scanning for a QR code using the camera.
+        while (true) {
+            try {
+                System.out.println("Scanning for QR code in 5 seconds...");
+                Thread.sleep(5000);
 
-      String decodedText = "S 16"
+                BufferedImage img = swiftBot.getQRImage();
+                String decodedMessage = swiftBot.decodeQRImage(img);
 
-      String inputString = decodedText;
+                if (decodedMessage.isEmpty()) {
+                    System.out.println("No QR code was found.");
+                } else {
+                    System.out.println("Found QR code.");
 
-            String[] parts = inputString.split(" ");
-            int side1 = Integer.valueOf(parts[1]);
-            int side2 = Integer.valueOf(parts[2]);
-            int side3 = Integer.valueOf(parts[3]);
+                    String[] parts = decodedMessage.split(" ");
 
-            String shape = parts[0];
-            String square = "S";
-            String triangle = "T";
+                    int side1 = Integer.valueOf(parts[1]);
+                    int side2 = Integer.valueOf(parts[2]);
+                    int side3 = Integer.valueOf(parts[3]);
 
-            if (shape == square) {
-               drawSquare(side1);
-            } else if (shape == triangle) {
-               drawTriangle(side1, side2, side3);
-            } else {
-               System.err.println("Invalid Shape Type: " + parts[0]);
+                    switch(parts[0]) {
+                        case "S" -> {
+                            System.out.println("Drawing Square with side length of " + side1);
+                            drawShape.drawSquare(side1);
+                        }
+
+                        case "T" -> {
+                            System.out.println("Drawing Square with side lengths of " + side1 + side2 + side3);
+                            drawShape.drawTriangle(side1, side2, side3);
+                        }
+
+                        default -> {
+                            System.out.println("Invalid shape type: " + parts[0]);
+                        }
+                    }
+
+                    // if (parts[0] == "S") {
+                    //     System.out.println("Drawing Square with side length of " + side1);
+                    //     drawSquare(side1);
+                    // } else if (parts[0] == "T") {
+                    //     System.out.println("Drawing Square with side lengths of " + side1 + side2 + side3);
+                    //     drawTriangle(side1, side2, side3);
+                    // } else {
+                    //     System.out.println("Invalid shape type: " + parts[0]);
+                    // }
+                }
+            } catch (Exception e) {
+                System.out.println("Error finding QR code.");
+                e.printStackTrace();
+                System.exit(5);
             }
-   }
-
-   public static void drawSquare(int sideLength) {
-
-        if (!checkShape.checkSideLength(sideLength)) {
-            System.err.println("Please enter a valid side length");
-            return;
-        }
-
-        int sidesDrawn = 0;
-        int speed = 100;
-        int time = sideLength / speed;
-
-        while (sidesDrawn < 4) {
-            API.move(speed, speed, time);
-            API.move(speed, 0, 500);
-            sidesDrawn += 1;
-        }
-   }
-
-    public static void drawTriangle(int side1, int side2, int side3) {
-
-        if (!checkShape.checkSideLength(side1, side2, side3)) {
-            System.err.println("Please enter a valid side length.");
-            return;
-        }
-
-        if (!checkShape.checkTriangle(side1, side2, side3)) {
-            System.err.println("The side lenghts provided cannot create a triangle.");
-            return;
-        }
-
-        int sidesDrawn = 0;
-        double[] angles = checkShape.calculateAngles(side1, side2, side3);
-
-        while(sidesDrawn < 3) {
-
-            int currentSide = 0;
-
-            // Find the time needed to move the SwiftBot for //
-            if (sidesDrawn == 0) {
-                currentSide = side1;
-            } else if (sidesDrawn == 1) {
-                currentSide = side2;
-            } else if (sidesDrawn == 2) {
-                currentSide = side3;
-            }
-
-            int leftSpeed = -100;
-            int rightSpeed = 100;
-            int wheelbase = 10;
-
-            double rightWheelDistance, leftWheelDistance;
-            double R = wheelbase * (rightSpeed - leftSpeed) / (2 * (rightSpeed + leftSpeed));
-
-            rightWheelDistance = Math.PI * R * angles[sidesDrawn] / 180.0; // Convert angle to radians
-            leftWheelDistance = Math.PI * (R + wheelbase) * angles[sidesDrawn] / 180.0; // Convert angle to radians
-
-            // Find the time required by the slower-moving wheel
-            double slowerSpeed = Math.min(Math.abs(rightSpeed), Math.abs(leftSpeed));
-            double turnTime = Math.abs(slowerSpeed) != 0 ? Math.abs(leftWheelDistance) / Math.abs(slowerSpeed) : 0;
-
-            moveRobot.moveForward(currentSide);
-            // Turns the bot 90 degrees clockwise //
-            //API.move(leftSpeed, rightSpeed, turnTime);
-            sidesDrawn += 1;
         }
     }
 
