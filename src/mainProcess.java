@@ -3,16 +3,16 @@ SwiftBotAPI API = new SwiftBotAPI();
 public class mainProcess {
     public static void main(String[] args) {
 
-      // BufferedImage img = API.GetQRImage();
+      BufferedImage img = API.GetQRImage();
 
       String decodedText = "T 16 17 16";
       if (decodedText.isEmpty()) {
          System.err.println("No decoded text");
       }
 
-      String inputShape = decodedText;
+      String inputString = decodedText;
 
-            String[] parts = inputShape.split(" ");
+            String[] parts = inputString.split(" ");
             int side1 = Integer.valueOf(parts[1]);
             int side2 = Integer.valueOf(parts[2]);
             int side3 = Integer.valueOf(parts[3]);
@@ -42,7 +42,9 @@ public class mainProcess {
         int time = sideLength / speed;
 
         while (sidesDrawn < 4) {
-            API.move(speed, speed, time)
+            API.move(speed, speed, time);
+            API.move(speed, 0, 5)
+            sidesDrawn += 1;
         }
    }
 
@@ -59,7 +61,7 @@ public class mainProcess {
         }
 
         int sidesDrawn = 0;
-        double[] angles = calculateAngle.calculateAngles(side1, side2, side3);
+        double[] angles = checkShape.calculateAngles(side1, side2, side3);
 
         while(sidesDrawn < 3) {
 
@@ -74,8 +76,8 @@ public class mainProcess {
                 currentSide = side3;
             }
 
-            int leftSpeed = -5;
-            int rightSpeed = 5;
+            int leftSpeed = -100;
+            int rightSpeed = 100;
             int wheelbase = 10;
 
             double rightWheelDistance, leftWheelDistance;
@@ -93,5 +95,9 @@ public class mainProcess {
             //API.move(leftSpeed, rightSpeed, turnTime);
             sidesDrawn += 1;
         }
+    }
+
+    public static void endProcess() {
+
     }
 }
