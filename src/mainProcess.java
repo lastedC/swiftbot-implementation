@@ -15,11 +15,11 @@ public class mainProcess {
             System.out.println("Error loading API" + exception.getMessage());
         };
 
-        AtomicBoolean run = new AtomicBoolean(true);
+        // AtomicBoolean run = new AtomicBoolean(true);
 
-        swiftBot.enableButton(Button.X, () -> {
-            run.set(false);
-        });
+        // swiftBot.enableButton(Button.X, () -> {
+        //     run.set(false);
+        // });
 
         String decodedMessage = "";
 
