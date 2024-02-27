@@ -1,4 +1,5 @@
 import java.awt.image.BufferedImage;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import swiftbot.*;
 
@@ -14,14 +15,16 @@ public class mainProcess {
             System.out.println("Error loading API" + exception.getMessage());
         };
 
+        AtomicBoolean run = new AtomicBoolean(true);
+
+        swiftBot.enableButton(Button.X, () -> {
+            run.set(false);
+        });
+
         String decodedMessage = "";
 
         // Continously scanning for a QR code using the camera.
-        while (true) {
-
-            swiftBot.enableButton(Button.X, () -> {
-                System.exit(5);
-            });
+        while (run.get()) {
 
             try {
                 System.out.println("Scanning for QR code...");
