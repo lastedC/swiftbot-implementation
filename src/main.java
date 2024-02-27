@@ -14,6 +14,8 @@ public class main {
             System.out.println("Error loading API" + exception.getMessage());
         };
 
+        String decodedMessage = "";
+
         // Continously scanning for a QR code using the camera.
         while (true) {
             try {
@@ -21,51 +23,53 @@ public class main {
                 Thread.sleep(5000);
 
                 BufferedImage img = swiftBot.getQRImage();
-                String decodedMessage = swiftBot.decodeQRImage(img);
-
-                if (decodedMessage.isEmpty()) {
-                    System.out.println("No QR code was found.");
-                } else {
-                    System.out.println("Found QR code.");
-
-                    String[] parts = decodedMessage.split(" ");
-
-                    int side1 = Integer.valueOf(parts[1]);
-                    int side2 = Integer.valueOf(parts[2]);
-                    int side3 = Integer.valueOf(parts[3]);
-
-                    String shape = parts[0];
-
-                    switch(shape) {
-                        case "S" -> {
-                            System.out.println("Drawing Square with side length of " + side1);
-                            drawShape.drawSquare(side1);
-                        }
-
-                        case "T" -> {
-                            System.out.println("Drawing Square with side lengths of " + side1 + side2 + side3);
-                            drawShape.drawTriangle(side1, side2, side3);
-                        }
-
-                        default -> {
-                            System.out.println("Invalid shape type: " + parts[0]);
-                        }
-                    }
-
-                    // if (parts[0] == "S") {
-                    //     System.out.println("Drawing Square with side length of " + side1);
-                    //     drawSquare(side1);
-                    // } else if (parts[0] == "T") {
-                    //     System.out.println("Drawing Square with side lengths of " + side1 + side2 + side3);
-                    //     drawTriangle(side1, side2, side3);
-                    // } else {
-                    //     System.out.println("Invalid shape type: " + parts[0]);
-                    // }
-                }
+                decodedMessage = swiftBot.decodeQRImage(img);
             } catch (Exception exception) {
                 System.out.println("Error finding QR code.");
                 exception.printStackTrace();
                 System.exit(5);
+            }
+
+            if (decodedMessage.isEmpty()) {
+                System.out.println("No QR code was found.");
+            } else {
+                System.out.println("Found QR code.");
+
+                String[] parts = decodedMessage.split(" ");
+
+                int side1 = Integer.valueOf(parts[1]);
+
+                String shape = parts[0];
+
+                switch(shape) {
+                    case "S" -> {
+                        System.out.println("Drawing Square with side length of " + side1);
+                        drawShape.drawSquare(side1);
+                    }
+
+                    case "T" -> {
+                        try {
+                        System.out.println("Drawing Square with side lengths of " + parts[1] + parts[2] + parts[3]);
+                        drawShape.drawTriangle(Integer.valueOf(parts[1]), Integer.valueOf(parts[2]), Integer.valueOf(parts[3]));
+                        } catch (Exception exception) {
+                            System.out.println("Error processing triangle sides.");
+                        }
+                    }
+
+                    default -> {
+                        System.out.println("Invalid shape type: " + parts[0]);
+                    }
+                }
+
+                // if (parts[0] == "S") {
+                //     System.out.println("Drawing Square with side length of " + side1);
+                //     drawSquare(side1);
+                // } else if (parts[0] == "T") {
+                //     System.out.println("Drawing Square with side lengths of " + side1 + side2 + side3);
+                //     drawTriangle(side1, side2, side3);
+                // } else {
+                //     System.out.println("Invalid shape type: " + parts[0]);
+                // }
             }
         }
     }
