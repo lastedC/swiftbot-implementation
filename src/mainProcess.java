@@ -5,7 +5,15 @@ public class mainProcess {
 
       BufferedImage img = API.GetQRImage();
 
-      String decodedText = "T 16 17 16";
+      try{
+          String decodedText = API.decodeQRImage(img);
+          if (!decodedText.isEmpty()) {
+              System.out.println(decodedText);
+          }
+      } catch(IllegalArgumentException e) {
+          e.printStackTrace();
+      }
+
       if (decodedText.isEmpty()) {
          System.err.println("No decoded text");
       }
@@ -43,7 +51,7 @@ public class mainProcess {
 
         while (sidesDrawn < 4) {
             API.move(speed, speed, time);
-            API.move(speed, 0, 5)
+            API.move(speed, 0, 500);
             sidesDrawn += 1;
         }
    }
