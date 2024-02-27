@@ -6,7 +6,7 @@ public class main {
 
     static SwiftBotAPI swiftBot;
 
-    public static void mainProcess(String[] args) {
+    public static void main(String[] args) {
 
         try {
             swiftBot = new SwiftBotAPI();
