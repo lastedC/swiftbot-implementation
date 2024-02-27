@@ -2,7 +2,7 @@ import swiftbot.*;
 
 public class drawShape {
 
-    static SwiftBotAPI swiftBot;
+    static SwiftBotAPI swiftBot = new SwiftBotAPI();
 
     public static void drawSquare(int sideLength) {
 
