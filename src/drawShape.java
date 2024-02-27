@@ -2,9 +2,7 @@ import swiftbot.*;
 
 public class drawShape {
 
-    static SwiftBotAPI swiftBot = new SwiftBotAPI();
-
-    public static void drawSquare(int sideLength) {
+    public static void drawSquare(SwiftBotAPI swiftBot, int sideLength) {
 
         if (!checkShape.checkSideLength(sideLength)) {
             System.out.println("The length provided is invalid. Pleae make sure it is between 15 and 85.");
@@ -25,7 +23,7 @@ public class drawShape {
         }
    }
 
-   public static void drawTriangle(int side1, int side2, int side3) {
+   public static void drawTriangle(SwiftBotAPI swiftBot, int side1, int side2, int side3) {
 
         if (!checkShape.checkSideLength(side1, side2, side3)) {
             System.out.println("The length provided is invalid. Pleae make sure it is between 15 and 85.");

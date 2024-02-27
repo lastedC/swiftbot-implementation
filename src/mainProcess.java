@@ -44,13 +44,13 @@ public class mainProcess {
                 switch(shape) {
                     case "S" -> {
                         System.out.println("Drawing Square with side length of " + side1);
-                        drawShape.drawSquare(side1);
+                        drawShape.drawSquare(swiftBot, side1);
                     }
 
                     case "T" -> {
                         try {
                         System.out.println("Drawing Square with side lengths of " + parts[1] + parts[2] + parts[3]);
-                        drawShape.drawTriangle(Integer.valueOf(parts[1]), Integer.valueOf(parts[2]), Integer.valueOf(parts[3]));
+                        drawShape.drawTriangle(swiftBot, Integer.valueOf(parts[1]), Integer.valueOf(parts[2]), Integer.valueOf(parts[3]));
                         } catch (Exception exception) {
                             System.out.println("Error processing triangle sides.");
                         }
