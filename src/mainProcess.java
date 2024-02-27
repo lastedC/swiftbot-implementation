@@ -2,7 +2,7 @@ import java.awt.image.BufferedImage;
 
 import swiftbot.*;
 
-public class main {
+public class mainProcess {
 
     static SwiftBotAPI swiftBot;
 
