@@ -6,11 +6,15 @@ public class drawShape {
 
     public static void drawSquare(int sideLength) {
 
+        try {
+            swiftBot = new SwiftBotAPI();
+        } catch (Exception exception) {
+            System.out.println("Error loading API" + exception.getMessage());
+        };
+
         if (!checkShape.checkSideLength(sideLength)) {
             System.out.println("The length provided is invalid. Pleae make sure it is between 15 and 85.");
             return;
-        } else {
-            System.out.println("Side lengths have been validated. Drawing square...");
         }
 
         for (int sidesDrawn = 0; sidesDrawn < 4; sidesDrawn++) {
