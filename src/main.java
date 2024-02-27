@@ -10,8 +10,8 @@ public class main {
 
         try {
             swiftBot = new SwiftBotAPI();
-        } catch (Exception e) {
-            System.out.println("Error loading API" + e.getMessage());
+        } catch (Exception exception) {
+            System.out.println("Error loading API" + exception.getMessage());
         };
 
         // Continously scanning for a QR code using the camera.
@@ -34,7 +34,9 @@ public class main {
                     int side2 = Integer.valueOf(parts[2]);
                     int side3 = Integer.valueOf(parts[3]);
 
-                    switch(parts[0]) {
+                    String shape = parts[0];
+
+                    switch(shape) {
                         case "S" -> {
                             System.out.println("Drawing Square with side length of " + side1);
                             drawShape.drawSquare(side1);
@@ -60,9 +62,9 @@ public class main {
                     //     System.out.println("Invalid shape type: " + parts[0]);
                     // }
                 }
-            } catch (Exception e) {
+            } catch (Exception exception) {
                 System.out.println("Error finding QR code.");
-                e.printStackTrace();
+                exception.printStackTrace();
                 System.exit(5);
             }
         }
