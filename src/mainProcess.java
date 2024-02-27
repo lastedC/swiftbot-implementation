@@ -2,8 +2,9 @@
 import swiftbot.*;
 
 public class mainProcess {
+
+    static SwiftBotAPI swiftBot;
     public static void main(String[] args) {
-        static SwiftBotAPI swiftBot;
 
       BufferedImage img = API.GetQRImage();
 
