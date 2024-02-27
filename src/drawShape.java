@@ -6,12 +6,6 @@ public class drawShape {
 
     public static void drawSquare(int sideLength) {
 
-        try {
-            swiftBot = new SwiftBotAPI();
-        } catch (Exception exception) {
-            System.out.println("Error loading API" + exception.getMessage());
-        };
-
         if (!checkShape.checkSideLength(sideLength)) {
             System.out.println("The length provided is invalid. Pleae make sure it is between 15 and 85.");
             return;
@@ -22,7 +16,6 @@ public class drawShape {
 
             try {
                 swiftBot.move(100, 100, time);
-
                 swiftBot.move(100, 0, 500);
             } catch (Exception exception) {
                 exception.printStackTrace();
