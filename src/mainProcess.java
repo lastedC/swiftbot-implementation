@@ -1,7 +1,9 @@
-SwiftBotAPI API = new SwiftBotAPI();
+//SwiftBotAPI API = new SwiftBotAPI();
+import swiftbot.*;
 
 public class mainProcess {
     public static void main(String[] args) {
+        static SwiftBotAPI swiftBot;
 
       BufferedImage img = API.GetQRImage();
 
