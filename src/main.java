@@ -1,25 +1,23 @@
-//SwiftBotAPI API = new SwiftBotAPI();
-//import swiftbot.*;
+public class main {
+//    SwiftBotAPI API = new SwiftBotAPI();
+    public static void mainProcess(String[] args) {
 
-public class mainProcess {
-    SwiftBotAPI API = new SwiftBotAPI();
-//    static SwiftBotAPI swiftBot;
-    public static void main(String[] args) {
-
-      BufferedImage img = API.GetQRImage();
-
-      try{
-          String decodedText = API.decodeQRImage(img);
-          if (!decodedText.isEmpty()) {
-              System.out.println(decodedText);
-          }
-      } catch(IllegalArgumentException e) {
-          e.printStackTrace();
-      }
+//      BufferedImage img = API.GetQRImage();
+//
+//      try{
+//          String decodedText = API.decodeQRImage(img);
+//          if (!decodedText.isEmpty()) {
+//              System.out.println(decodedText);
+//          }
+//      } catch(IllegalArgumentException e) {
+//          e.printStackTrace();
+//      }
 
       if (decodedText.isEmpty()) {
          System.err.println("No decoded text");
       }
+
+      String decodedText = "S 16"
 
       String inputString = decodedText;
 
