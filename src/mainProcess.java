@@ -18,6 +18,11 @@ public class mainProcess {
 
         // Continously scanning for a QR code using the camera.
         while (true) {
+
+            swiftBot.enableButton(Button.X, () -> {
+                System.exit(5);
+            });
+
             try {
                 System.out.println("Scanning for QR code...");
                 Thread.sleep(2000);
