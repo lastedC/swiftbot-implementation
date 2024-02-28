@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import swiftbot.*;
 
-public class mainProcess {
+public class main {
 
     static SwiftBotAPI swiftBot;
 
