@@ -27,13 +27,15 @@ public class main {
             System.out.println("File already exists.");
         };
 
+        String[] parts = decodedMessage.split(" ");
+
         AtomicBoolean run = new AtomicBoolean(true);
 
         swiftBot.enableButton(Button.X, () -> {
             run.set(false);
 
             try {
-                endProcess(file);
+                end(file);
             } catch (InterruptedException exception) {
                 exception.printStackTrace();
                 System.out.println("Error running termination process.");
@@ -60,8 +62,6 @@ public class main {
                 System.out.println("No QR code was found.");
             } else {
                 System.out.println("Found QR code.");
-
-                String[] parts = decodedMessage.split(" ");
 
                 int side1 = Integer.valueOf(parts[1]);
 
@@ -106,16 +106,23 @@ public class main {
                 switch (splitData[0]) {
                     case "S" -> {
                         shape = "Square";
+                        int side
+                        System.out.print(shape + " : ");
+                        System.out.println(side + "cm");
                     }
                     case "T" -> {
                         shape = "Triangle";
+                        int side1, side2, side3;
+                        System.out.print(shape + " : ");
+                        System.out.println("side 1: " + side1 + "cm | side 2: " + side2 + "cm | side 3: " + side3);
                     }
                     default -> {
-                        shape = "Not found";
+                        shape = "Shape data unavailable";
                     }
                 }
 
-                System.out.print(shape + " : ");
+//                System.out.print(shape + " : ");
+//                System.out.println()
             }
 
             scanner.close();
