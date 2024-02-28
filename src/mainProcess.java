@@ -21,6 +21,12 @@ public class mainProcess {
 
         File file = new File("shapes.txt");
 
+        if (file.createNewFile()) {
+            System.out.println("File created: " + file.getName());
+        } else {
+            System.out.println("File already exists.");
+        };
+
         AtomicBoolean run = new AtomicBoolean(true);
 
         swiftBot.enableButton(Button.X, () -> {
@@ -65,6 +71,7 @@ public class mainProcess {
                 switch(shape) {
                     case "S" -> {
                         System.out.println("Drawing Square with side length of " + side1);
+                        drawShape.drawSquare(swiftBot, side1);
 //                        drawShape.drawSquare(swiftBot, side1);
                     }
 
