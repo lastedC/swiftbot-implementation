@@ -1,4 +1,8 @@
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import swiftbot.*;
@@ -7,7 +11,7 @@ public class mainProcess {
 
     static SwiftBotAPI swiftBot;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
 
         try {
             swiftBot = new SwiftBotAPI();
@@ -15,12 +19,19 @@ public class mainProcess {
             System.out.println("Error loading API" + exception.getMessage());
         };
 
+        File file = new File("shapes.txt");
+
         AtomicBoolean run = new AtomicBoolean(true);
 
         swiftBot.enableButton(Button.X, () -> {
             run.set(false);
 
-            endProcess();
+            try {
+                endProcess(file);
+            } catch (InterruptedException exception) {
+                exception.printStackTrace();
+                System.out.println("Error running termination process.");
+            }
         });
 
         String decodedMessage = "";
@@ -74,7 +85,44 @@ public class mainProcess {
         }
     }
 
-    public static void endProcess() {
+    public static void endProcess(File file) throws InterruptedException {
+
+        try {
+            Scanner scanner = new Scanner(file);
+
+            String shape;
+
+            while (scanner.hasNextLine()) {
+                String data = scanner.nextLine();
+
+                // Printing shapes in order
+                String[] splitData = data.split(" ");
+
+                switch (splitData[0]) {
+                    case "S" -> {
+                        shape = "Square";
+                    }
+                    case "T" -> {
+                        shape = "Triangle";
+                    }
+                    default -> {
+                        shape = "Not found";
+                    }
+                }
+
+                System.out.print(shape + " : ");
+            }
+
+            scanner.close();
+            file.delete();
+        } catch (FileNotFoundException exception) {
+            exception.printStackTrace();
+            System.out.println("Error finding file.");
+        }
+
+        System.out.println("System terminating in 2 seconds...");
+        Thread.sleep(2000);
+        System.exit(0);
         // print shapes // use text file maybe?
 
         // output largest shape
