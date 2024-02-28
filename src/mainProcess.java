@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import swiftbot.*;
 
-public class main {
+public class mainProcess {
 
     static SwiftBotAPI swiftBot;
 
@@ -42,6 +42,7 @@ public class main {
 
         String decodedMessage = "";
 
+        drawShape drawShape = new drawShape();
         // Continously scanning for a QR code using the camera.
         while (run.get()) {
 
@@ -72,7 +73,6 @@ public class main {
                     case "S" -> {
                         System.out.println("Drawing Square with side length of " + side1);
                         drawShape.drawSquare(swiftBot, side1);
-//                        drawShape.drawSquare(swiftBot, side1);
                     }
 
                     case "T" -> {

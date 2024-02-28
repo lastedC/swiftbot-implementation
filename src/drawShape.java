@@ -2,12 +2,12 @@ import swiftbot.*;
 
 public class drawShape {
 
-    public static void drawSquare(SwiftBotAPI swiftBot, int sideLength) {
+    public void drawSquare(SwiftBotAPI swiftBot, int sideLength) {
 
         if (!checkShape.checkSideLength(sideLength)) {
             System.out.println("The length provided is invalid. Pleae make sure it is between 15 and 85.");
             return;
-        }
+        };
 
         for (int sidesDrawn = 0; sidesDrawn < 4; sidesDrawn++) {
             int time = sideLength / 100;
@@ -21,7 +21,7 @@ public class drawShape {
                 System.out.println("Error moving swiftbot.");
                 System.exit(5);
             }
-        }
+        };
    }
 
    public static void drawTriangle(SwiftBotAPI swiftBot, int side1, int side2, int side3) {
@@ -29,12 +29,12 @@ public class drawShape {
         if (!checkShape.checkSideLength(side1, side2, side3)) {
             System.out.println("The length provided is invalid. Pleae make sure it is between 15 and 85.");
             return;
-        }
+        };
 
         if (!checkShape.checkTriangle(side1, side2, side3)) {
             System.out.println("The side lengths provided are unable to create a truangle.");
             return;
-        }
+        };
 
         double[] angles = checkShape.calculateAngles(side1, side2, side3);
 
