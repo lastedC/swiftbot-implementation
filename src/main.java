@@ -27,8 +27,6 @@ public class main {
             System.out.println("File already exists.");
         };
 
-        String[] parts = decodedMessage.split(" ");
-
         AtomicBoolean run = new AtomicBoolean(true);
 
         swiftBot.enableButton(Button.X, () -> {
@@ -57,6 +55,8 @@ public class main {
                 exception.printStackTrace();
                 System.exit(5);
             }
+
+            String[] parts = decodedMessage.split(" ");
 
             if (decodedMessage.isEmpty()) {
                 System.out.println("No QR code was found.");
@@ -92,10 +92,17 @@ public class main {
 
     public static void end(File file) throws InterruptedException {
 
+        // FILE FORMAT: "shape averageTime side1 side2 side3"
+
+        /* Output Template:
+         * Shape : SideLengths : AverageTime
+         */
+
         try {
             Scanner scanner = new Scanner(file);
 
-            String shape;
+            String string = "B 0";
+            String[] largestShape = string.split(" ");
 
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
@@ -103,26 +110,38 @@ public class main {
                 // Printing shapes in order
                 String[] splitData = data.split(" ");
 
-                switch (splitData[0]) {
+                String shape = splitData[0];
+                int averageTime = Integer.valueOf(splitData[1]);
+                int[] sides = {Integer.valueOf(splitData[2]), Integer.valueOf(splitData[3]), Integer.valueOf(splitData[4])};
+
+                switch (shape) {
                     case "S" -> {
-                        shape = "Square";
-                        int side
-                        System.out.print(shape + " : ");
-                        System.out.println(side + "cm");
+                        System.out.println("Square : " + sides[0] + "cm : " + averageTime + " seconds");
+
+                        if (Integer.valueOf(sides[0]) > Integer.valueOf(largestShape[1])) {
+                            largestShape[0] = "Square";
+                            largestShape[1] = splitData[1];
+                        }
                     }
                     case "T" -> {
-                        shape = "Triangle";
-                        int side1, side2, side3;
-                        System.out.print(shape + " : ");
-                        System.out.println("side 1: " + side1 + "cm | side 2: " + side2 + "cm | side 3: " + side3);
+                        System.out.println("Triangle : " + sides[0] + "cm " + sides[1] + "cm " + sides[3] + "cm : " + averageTime + " seconds");
+
+                        for (int i = 0; i < 3; i++) {
+                            if (Integer.valueOf(sides[i]) > Integer.valueOf(largestShape[1])) {
+                                largestShape[0] = "Triangle";
+                                for (int v = 1; v <= 3; v++) {
+                                    largestShape[v] = splitData[v];
+                                }
+                            }
+                        }
                     }
                     default -> {
                         shape = "Shape data unavailable";
                     }
                 }
 
-//                System.out.print(shape + " : ");
-//                System.out.println()
+
+                System.out.println("The largest shape was a " + largestShape[0] + " with side(s) of : " + largestShape[1] + "cm | " + largestShape[2] + "cm | " + largestShape[3] + "cm");
             }
 
             scanner.close();
@@ -135,9 +154,9 @@ public class main {
         System.out.println("System terminating in 2 seconds...");
         Thread.sleep(2000);
         System.exit(0);
-        // print shapes // use text file maybe?
+        // print shapes // use text file maybe? // DONE
 
-        // output largest shape
+        // output largest shape // DONE
 
         // output most frequent drawn shape
 
