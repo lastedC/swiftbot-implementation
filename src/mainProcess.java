@@ -15,11 +15,13 @@ public class mainProcess {
             System.out.println("Error loading API" + exception.getMessage());
         };
 
-        // AtomicBoolean run = new AtomicBoolean(true);
+        AtomicBoolean run = new AtomicBoolean(true);
 
-        // swiftBot.enableButton(Button.X, () -> {
-        //     run.set(false);
-        // });
+        swiftBot.enableButton(Button.X, () -> {
+            run.set(false);
+
+            endProcess();
+        });
 
         String decodedMessage = "";
 
@@ -73,6 +75,12 @@ public class mainProcess {
     }
 
     public static void endProcess() {
+        // print shapes // use text file maybe?
 
+        // output largest shape
+
+        // output most frequent drawn shape
+
+        // output average time it took to draw all shapes
     }
 }

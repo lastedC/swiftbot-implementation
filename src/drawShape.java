@@ -13,7 +13,7 @@ public class drawShape {
             int time = sideLength / 100;
 
             try {
-                swiftBot.move(100, 100, 1000);
+                swiftBot.move(100, 100, time);
 
                 swiftBot.move(100, 0, 5000);
             } catch (Exception exception) {
