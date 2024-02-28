@@ -92,7 +92,7 @@ public class main {
         }
     }
 
-    public static void endProcess(File file) throws InterruptedException {
+    public static void end(File file) throws InterruptedException {
 
         try {
             Scanner scanner = new Scanner(file);
