@@ -13,6 +13,8 @@ public class main {
 
     public static void start(String[] args) throws InterruptedException, IOException {
 
+        draw drawShape = new draw();
+
         try {
             swiftBot = new SwiftBotAPI();
         } catch (Exception exception) {
@@ -70,7 +72,7 @@ public class main {
                 switch(shape) {
                     case "S" -> {
                         System.out.println("Drawing Square with side length of " + side1);
-                        draw.drawSquare(swiftBot, side1);
+                        drawShape.drawSquare(swiftBot, side1);
                     }
 
                     case "T" -> {
