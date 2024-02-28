@@ -98,6 +98,10 @@ public class main {
          * Shape : SideLengths : AverageTime
          */
 
+        int numberOfSquares = 0;
+        int numberOfTriangles = 0;
+        String mostFrequentShape = "";
+
         try {
             Scanner scanner = new Scanner(file);
 
@@ -122,6 +126,8 @@ public class main {
                             largestShape[0] = "Square";
                             largestShape[1] = splitData[1];
                         }
+
+                        numberOfSquares += 1;
                     }
                     case "T" -> {
                         System.out.println("Triangle : " + sides[0] + "cm " + sides[1] + "cm " + sides[3] + "cm : " + averageTime + " seconds");
@@ -134,6 +140,8 @@ public class main {
                                 }
                             }
                         }
+
+                        numberOfTriangles += 1;
                     }
                     default -> {
                         shape = "Shape data unavailable";
@@ -142,6 +150,16 @@ public class main {
 
 
                 System.out.println("The largest shape was a " + largestShape[0] + " with side(s) of : " + largestShape[1] + "cm | " + largestShape[2] + "cm | " + largestShape[3] + "cm");
+
+                if (numberOfSquares > numberOfTriangles) {
+                    mostFrequentShape = "Square";
+                } else if (numberOfSquares < numberOfTriangles) {
+                    mostFrequentShape = "Triangle";
+                } else {
+                    mostFrequentShape = "Square & Triangle";
+                }
+                
+                System.out.println("The most frequently drawn shape was : " + mostFrequentShape);
             }
 
             scanner.close();
@@ -160,6 +178,6 @@ public class main {
 
         // output most frequent drawn shape
 
-        // output average time it took to draw all shapes
+        // output average time it took to draw all shapes DONE
     }
 }
