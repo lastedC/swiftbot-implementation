@@ -2,7 +2,7 @@ import swiftbot.*;
 
 public class draw {
 
-    public void drawSquare(SwiftBotAPI swiftBot, int sideLength) {
+    public static void drawSquare(SwiftBotAPI swiftBot, int sideLength) {
 
         if (!check.checkSideLength(sideLength)) {
             System.out.println("The length provided is invalid. Pleae make sure it is between 15 and 85.");

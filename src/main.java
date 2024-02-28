@@ -41,8 +41,6 @@ public class main {
         });
 
         String decodedMessage = "";
-
-        draw drawShape = new draw();
         // Continously scanning for a QR code using the camera.
         while (run.get()) {
 
@@ -72,7 +70,7 @@ public class main {
                 switch(shape) {
                     case "S" -> {
                         System.out.println("Drawing Square with side length of " + side1);
-                        drawShapeInstance.drawSquare(swiftBot, side1);
+                        draw.drawSquare(swiftBot, side1);
                     }
 
                     case "T" -> {
