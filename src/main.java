@@ -42,7 +42,7 @@ public class main {
 
         String decodedMessage = "";
 
-        drawShape drawShapeInstance = new drawShape();
+        draw drawShape = new draw();
         // Continously scanning for a QR code using the camera.
         while (run.get()) {
 

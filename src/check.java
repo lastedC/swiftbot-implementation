@@ -1,4 +1,4 @@
-public class checkShape {
+public class check {
     public static boolean checkTriangle(double side1, double side2, double side3) {
 
         if (side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1) {
@@ -15,7 +15,7 @@ public class checkShape {
 
         if (sides.length < 1) {
             side1 = sides[0];
-            
+
             if (side1 < 15 && side1 > 85) {
                 System.err.println("Invalid side length");
                 return false;
