@@ -158,6 +158,8 @@ public class mainProcess {
                         }
 
                         numberOfSquares += 1;
+
+                        break;
                     }
                     case "T" -> {
                         System.out.println("Triangle | " + side1 + "cm : " + side2 + "cm : " + side3 + "cm | " + averageTime + " seconds");
@@ -170,6 +172,8 @@ public class mainProcess {
                         }
 
                         numberOfTriangles += 1;
+
+                        break;
                     }
                     default -> {
                         shape = "Shape data unavailable";
