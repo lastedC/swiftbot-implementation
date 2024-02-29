@@ -173,6 +173,7 @@ public class mainProcess {
                     }
                     default -> {
                         shape = "\u001B[31m" + "U" + "\u001B[0m";
+                        side1 = side2 = side3 = 0;
                     }
                 }
             }
