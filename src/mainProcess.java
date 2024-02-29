@@ -13,14 +13,20 @@ public class mainProcess {
 
     public static void main(String[] args) throws InterruptedException, IOException {
 
+        System.out.println("---------------------------------------\nDRAW SHAPE PROGRAM     By: Shihab Marey\n---------------------------------------");
+        Thread.sleep(1000);
+        System.out.println("\nLoading API...");
+
         try {
             swiftBot = new SwiftBotAPI();
+            System.out.println("\nAPI loaded successfully.");
         } catch (Exception exception) {
             System.out.println("Error loading API" + exception.getMessage());
         };
 
         File file = new File("shapes.txt");
 
+        System.out.println("\nCreating file...");
         if (file.createNewFile()) {
             System.out.println("File created: " + file.getName());
         } else {
@@ -40,9 +46,13 @@ public class mainProcess {
             }
         });
 
+        System.out.println("\nStarting program...\n");
+        Thread.sleep(1000);
+        System.out.println("\n---------------------------------------\n");
+
         String decodedMessage = "";
         // Continously scanning for a QR code using the camera.
-        System.out.println("Scanning for QR code");
+        System.out.println("Please scan QR code.");
         while (run.get()) {
 
             try {
@@ -174,7 +184,7 @@ public class mainProcess {
             Thread.sleep(1000);
 
             scanner.close();
-            // file.delete();
+            file.delete();
         } catch (FileNotFoundException exception) {
             exception.printStackTrace();
             System.out.println("Error finding file.");
