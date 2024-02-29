@@ -126,6 +126,8 @@ public class mainProcess {
             String string = "B 0 0 0"; // B -> Blank
             String[] largestShape = string.split(" ");
 
+            System.out.println("  Shape  |    Side Lengths    | Time To Draw\n------------------------------------------");
+
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
 
@@ -143,8 +145,12 @@ public class mainProcess {
                     case "S" -> {
                         System.out.println(" Square  |        " + side1 + "cm        | " + averageTime + " seconds");
 
-                        // System.out.println(" Square  |        14cm        | 18 seconds");
-                        // System.out.println("Triangle | 12cm : 16cm : 15cm | 8 seconds");
+                        /*
+                        * "  Shape  |    Side Lengths    | Time To Draw"
+                        * "------------------------------------------"
+                        * " Square  |        14cm        | 18 seconds"
+                        * "Triangle | 12cm : 16cm : 15cm | 8 seconds"
+                        */
 
                         if (Integer.valueOf(side1) > Integer.valueOf(largestShape[1])) {
                             largestShape[0] = "Square";
@@ -171,26 +177,35 @@ public class mainProcess {
                 }
             }
 
+            System.out.println("\n Largest Shape:");
+
             if (largestShape[0] == "Square") {
-                System.out.println("The largest shape was a " + largestShape[0] + " with side(s) of : " + largestShape[1] + "cm");
+                System.out.println("Shape: " + largestShape[0] + "| Side(s): " + largestShape[1] + "cm");
             } else if (largestShape[0] == "Triange") {
-                System.out.println("The largest shape was a " + largestShape[0] + " with side(s) of : " + largestShape[1] + "cm | " + largestShape[2] + "cm | " + largestShape[3] + "cm");
+                System.out.println("Shape: " + largestShape[0] + "| Side(s): " + largestShape[1] + "cm : " + largestShape[2] + "cm : " + largestShape[3] + "cm");
             } else {
                 System.out.println("Error finding largest shape.");
             }
 
+            System.out.println("\n Most Frequent Shape:");
+
+            int numberofInsantces = 0;
+
             if (numberOfSquares > numberOfTriangles) {
                 mostFrequentShape = "Square";
+                numberofInsantces = numberOfSquares;
             } else if (numberOfSquares < numberOfTriangles) {
                 mostFrequentShape = "Triangle";
+                numberofInsantces = numberOfTriangles;
             } else if (numberOfSquares == numberOfTriangles) {
                 mostFrequentShape = "Square & Triangle";
+                numberofInsantces = numberOfSquares;
             } else {
                 mostFrequentShape = " ";
             }
             
             if (mostFrequentShape != " ") {
-                System.out.println("The most frequently drawn shape was : " + mostFrequentShape);
+                System.out.println("Shape: " + mostFrequentShape + " | Drawn " + numberofInsantces + " times.");
             }
 
             Thread.sleep(1000);
@@ -199,18 +214,11 @@ public class mainProcess {
             file.delete();
         } catch (FileNotFoundException exception) {
             exception.printStackTrace();
-            System.out.println("Error finding file.");
+            System.out.println("\u001B[31m" + "Error finding file." + "\u001B[0m");
         }
 
-        System.out.println("System terminating in 2 seconds...");
+        System.out.println("\u001B[35m" + "\nSystem terminating in 2 seconds..." + "\u001B[0m");
         Thread.sleep(2000);
         System.exit(0);
-        // print shapes // use text file maybe? // DONE
-
-        // output largest shape // DONE
-
-        // output most frequent drawn shape // DONE
-
-        // output average time it took to draw all shapes DONE
     }
 }
