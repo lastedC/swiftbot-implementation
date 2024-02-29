@@ -72,12 +72,14 @@ public class mainProcess {
             } else {
                 System.out.println("Found QR code.");
 
-                try {
-                    if (parts.length < 2 || parts[0].length() > 1) {
-                        System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
-                    }
-                } catch (ArrayIndexOutOfBoundsException exception) {
-                    System.out.println("\u001B[33m" + "Input detected as empty." + "\u001B[0m");
+                if (parts.length < 2) {
+                    System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
+                    continue; // continue scanning
+                }
+
+                if (parts[0].length() > 1) {
+                    System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
+                    continue; // continue scanning
                 }
                 
 
