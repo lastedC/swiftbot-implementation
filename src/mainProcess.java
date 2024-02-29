@@ -56,9 +56,6 @@ public class mainProcess {
         while (run.get()) {
 
             try {
-                // System.out.println("Scanning for QR code");
-                Thread.sleep(2000);
-
                 BufferedImage img = swiftBot.getQRImage();
                 decodedMessage = swiftBot.decodeQRImage(img);
             } catch (Exception exception) {
@@ -80,7 +77,7 @@ public class mainProcess {
 
                 switch(shape) {
                     case "S" -> {
-                        System.out.println("Drawing square. Side Length: " + parts);
+                        System.out.println("Drawing square. Side Length: " + parts[1]);
                         draw.drawSquare(swiftBot, file, side1);
                         System.out.println("Scanning for QR code\n");
                     }
