@@ -125,6 +125,7 @@ public class mainProcess {
             String[] largestShape = string.split(" ");
 
             String largestShapeName = largestShape[0];
+            System.out.println("largest shape name: " + largestShapeName);
             int largestShapeSize = Integer.valueOf(largestShape[1]);
 
             System.out.println("  Shape  |    Side Lengths    | Time To Draw\n--------------------------------------------");
@@ -167,18 +168,18 @@ public class mainProcess {
                         numberOfSquares += 1;
                         break;
                     }
-                    // case "T" -> {
-                    //     System.out.println("Triangle | " + side1 + "cm : " + side2 + "cm : " + side3 + "cm | " + averageTime + " seconds");
+                    case "T" -> {
+                        System.out.println("Triangle | " + side1 + "cm : " + side2 + "cm : " + side3 + "cm | " + averageTime + " seconds");
 
-                    //     for (int i = 0; i < 3; i++) {
-                    //         if (Integer.valueOf(splitData[i]) > largestShapeSize) {
-                    //             largestShapeName = "Triangle";
-                    //             largestShapeSize = Integer.valueOf(splitData[i]);
-                    //         }
-                    //     }
-                    //     numberOfTriangles += 1;
-                    //     break;
-                    // }
+                        // for (int i = 0; i < 3; i++) {
+                        //     if (Integer.valueOf(splitData[i]) > largestShapeSize) {
+                        //         largestShapeName = "Triangle";
+                        //         largestShapeSize = Integer.valueOf(splitData[i]);
+                        //     }
+                        // }
+                        numberOfTriangles += 1;
+                        break;
+                    }
                     default -> {
                         shape = "\u001B[31m" + "U" + "\u001B[0m";
                         side1 = side2 = side3 = 0;
