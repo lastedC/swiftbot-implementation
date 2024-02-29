@@ -68,9 +68,18 @@ public class mainProcess {
             String[] parts = decodedMessage.split(" ");
 
             if (decodedMessage.isEmpty()) {
-                // System.out.println("No QR code was found.");
+                // do nothing and return to scanning
             } else {
                 System.out.println("Found QR code.");
+
+                try {
+                    if (parts.length < 2 || parts[0].length() > 1) {
+                        System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
+                    }
+                } catch (ArrayIndexOutOfBoundsException exception) {
+                    System.out.println("\u001B[33m" + "Input detected as empty." + "\u001B[0m");
+                }
+                
 
                 int side1 = Integer.valueOf(parts[1]);
 
