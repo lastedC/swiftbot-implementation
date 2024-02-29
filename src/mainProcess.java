@@ -151,27 +151,25 @@ public class mainProcess {
                         shape = "Shape data unavailable";
                     }
                 }
-
-                if (largestShape[0] == "Square") {
-                    System.out.println("The largest shape was a " + largestShape[0] + " with side(s) of : " + largestShape[1] + "cm");
-                } else if (largestShape[0] == "Triange") {
-                    System.out.println("The largest shape was a " + largestShape[0] + " with side(s) of : " + largestShape[1] + "cm | " + largestShape[2] + "cm | " + largestShape[3] + "cm");
-                } else {
-                    System.out.println("Error finding largest shape.");
-                }
-
-                
-
-                if (numberOfSquares > numberOfTriangles) {
-                    mostFrequentShape = "Square";
-                } else if (numberOfSquares < numberOfTriangles) {
-                    mostFrequentShape = "Triangle";
-                } else {
-                    mostFrequentShape = "Square & Triangle";
-                }
-                
-                System.out.println("The most frequently drawn shape was : " + mostFrequentShape);
             }
+
+            if (largestShape[0] == "Square") {
+                System.out.println("The largest shape was a " + largestShape[0] + " with side(s) of : " + largestShape[1] + "cm");
+            } else if (largestShape[0] == "Triange") {
+                System.out.println("The largest shape was a " + largestShape[0] + " with side(s) of : " + largestShape[1] + "cm | " + largestShape[2] + "cm | " + largestShape[3] + "cm");
+            } else {
+                System.out.println("Error finding largest shape.");
+            }
+
+            if (numberOfSquares > numberOfTriangles) {
+                mostFrequentShape = "Square";
+            } else if (numberOfSquares < numberOfTriangles) {
+                mostFrequentShape = "Triangle";
+            } else {
+                mostFrequentShape = "Square & Triangle";
+            }
+            
+            System.out.println("The most frequently drawn shape was : " + mostFrequentShape);
 
             Thread.sleep(1000);
 
