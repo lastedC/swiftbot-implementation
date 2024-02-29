@@ -13,7 +13,7 @@ public class checkShape {
 
         for (int i = 0; i < sides.length; i++) {
             if (sides[i] < 15 || sides[i] > 85) {
-                System.out.println("\u001B[33m" + "The lengths provided are invalid." + "\u001B[0m");
+                System.out.println("\u001B[33m" + "Invalid side length.\nMust be between 15cm and 85cm." + "\u001B[0m");
                 return false;
             }
         }

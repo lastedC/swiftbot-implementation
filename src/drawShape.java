@@ -10,7 +10,6 @@ public class drawShape {
         int totalTime = 0;
 
         if (!checkShape.checkSideLength(sideLength)) {
-            System.out.println("\u001B[33m" + "Invalid side length.\nMust be between 15cm and 85cm." + "\u001B[0m");
             return;
         };
 
