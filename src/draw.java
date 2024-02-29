@@ -15,6 +15,8 @@ public class draw {
             // time needed in milliseconds
             int time = (sideLength / 5) * 1000;
 
+            System.out.println("time to move is " + time);
+
             try {
                 swiftBot.move(100, 100, time);
 
@@ -65,7 +67,7 @@ public class draw {
             }
 
             System.out.println("Current angle: " + currentAngle); // output for test purposes only
-            int time = sideLength / 100;
+            int time = (sideLength / 5) * 1000;
 
             try {
                 swiftBot.move(100, 100, time);
