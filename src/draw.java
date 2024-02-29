@@ -47,6 +47,7 @@ public class draw {
                 swiftBot.fillUnderlights(green);
                 Thread.sleep(500);
                 swiftBot.disableUnderlights();
+                Thread.sleep(500);
 
             }
             // swiftBot.fillUnderlights(green);
