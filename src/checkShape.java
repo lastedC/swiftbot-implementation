@@ -11,27 +11,10 @@ public class checkShape {
 
     public static boolean checkSideLength(int... sides) {
 
-        int side1, side2, side3;
-
-        if (sides.length < 1) {
-            side1 = sides[0];
-
-            if (side1 < 15 && side1 > 85) {
-                System.err.println("Invalid side length");
+        for (int i = 0; i < sides.length; i++) {
+            if (sides[i] < 15 || sides[i] > 85) {
+                System.out.println("\u001B[33m" + "The lengths provided are invalid." + "\u001B[0m");
                 return false;
-            }
-        }
-
-        if (sides.length > 1) {
-            side1 = sides[0];
-            side2 = sides[1];
-            side3 = sides[2];
-
-            if (side1 < 15 && side1 > 85 &&
-            side2 < 15 && side2 > 85 &&
-            side3 < 15 && side3 > 85) {
-            System.err.println("Invaluded side length");
-            return false;
             }
         }
 
