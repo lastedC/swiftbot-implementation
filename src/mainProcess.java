@@ -171,12 +171,12 @@ public class mainProcess {
                     case "T" -> {
                         System.out.println("Triangle | " + side1 + "cm : " + side2 + "cm : " + side3 + "cm | " + averageTime + " seconds");
 
-                        // for (int i = 0; i < 3; i++) {
-                        //     if (Integer.valueOf(splitData[i]) > largestShapeSize) {
-                        //         largestShapeName = "Triangle";
-                        //         largestShapeSize = Integer.valueOf(splitData[i]);
-                        //     }
-                        // }
+                        for (int i = 1; i <= 3; i++) {
+                            if (Integer.valueOf(splitData[i]) > largestShapeSize) {
+                                largestShapeName = "Triangle";
+                                largestShapeSize = Integer.valueOf(splitData[i]);
+                            }
+                        }
                         numberOfTriangles += 1;
                         break;
                     }
