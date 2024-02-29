@@ -225,8 +225,19 @@ public class mainProcess {
             System.out.println("\u001B[31m" + "Error finding file." + "\u001B[0m");
         }
 
+        int[] red = {255, 0, 0};
+        try {
+            swiftBot.fillUnderlights(red);
+        } catch (IllegalArgumentException exception) {
+            exception.printStackTrace();
+        }
         System.out.println("\u001B[35m" + "\nSystem terminating in 2 seconds..." + "\u001B[0m");
         Thread.sleep(2000);
+        try {
+            swiftBot.disableUnderlights();
+        } catch (IllegalArgumentException exception) {
+            exception.printStackTrace();
+        }
         System.exit(0);
     }
 }
