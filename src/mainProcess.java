@@ -75,33 +75,35 @@ public class mainProcess {
 
             String[] parts = decodedMessage.split(" ");
 
+            boolean valid = true;
+
             if (decodedMessage.isEmpty()) {
                 // do nothing and return to scanning
             } else {
                 System.out.println("Found QR code.");
 
                 if (parts.length < 2) {
-                    invalidInput.invalidInputMessage();
+                    valid = false;
                     continue; // continue scanning
                 } else if (parts.length > 2 && parts.length != 4) {
-                    invalidInput.invalidInputMessage();
+                    valid = false;
                     continue; // continue scanning
                 }
 
                 // Checking if the first letter has a length of more than 1
                 if (parts[0].length() > 1) {
-                    invalidInput.invalidInputMessage();
+                    valid = false;
                     continue; // continue scanning
                 }
 
                 // checking values if there are 2
                 if (parts.length == 2) {
                     if (parts[0].length() > 1 || parts[1].length() != 2) {
-                        invalidInput.invalidInputMessage();
+                        valid = false;
                         continue; // continue scanning
                     }
                     if (!(parts[0] instanceof String) || (parts[1] instanceof String)) {
-                        invalidInput.invalidInputMessage();
+                        valid = false;
                         continue; // continue scanning
                     }
                 }
@@ -109,20 +111,24 @@ public class mainProcess {
                 // checking values if there are 4
                 if (parts.length == 4) {
                     if (parts[0].length() > 1) {
-                        invalidInput.invalidInputMessage();
+                        valid = false;
                         continue; // continue scanning
                     }
-                    boolean valid = true;
                     for (int i = 1; i < parts.length; i++) {
                         if (parts[i].length() != 2 || !(parts[0] instanceof String) || (parts[i] instanceof String)) {
-                            valid = true;
+                            valid = false;
                             continue; // continue scanning
                         }
                     }
                     if (!valid) {
-                        invalidInput.invalidInputMessage();
+                        valid = false;
                         continue; // continue scanning
                     }
+                }
+
+                if (!valid) {
+                    invalidInput.invalidInputMessage();
+                    continue; // continue scanning
                 }
 
                 int side1 = Integer.valueOf(parts[1]);
