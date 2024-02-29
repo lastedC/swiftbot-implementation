@@ -156,9 +156,7 @@ public class mainProcess {
                             largestShapeName = "Square";
                             largestShapeSize = side1;
                         }
-
                         numberOfSquares += 1;
-
                         break;
                     }
                     case "T" -> {
@@ -170,13 +168,11 @@ public class mainProcess {
                                 largestShapeSize = Integer.valueOf(splitData[i]);
                             }
                         }
-
                         numberOfTriangles += 1;
-
                         break;
                     }
                     default -> {
-                        shape = "Shape data unavailable";
+                        shape = "\u001B[31m" + "U" + "\u001B[0m";
                     }
                 }
             }
