@@ -112,11 +112,16 @@ public class mainProcess {
                         invalidInput.invalidInputMessage();
                         continue; // continue scanning
                     }
+                    boolean valid = true;
                     for (int i = 1; i < parts.length; i++) {
                         if (parts[i].length() != 2 || !(parts[0] instanceof String) || (parts[i] instanceof String)) {
-                            invalidInput.invalidInputMessage();
+                            valid = true;
                             continue; // continue scanning
                         }
+                    }
+                    if (!valid) {
+                        invalidInput.invalidInputMessage();
+                        continue; // continue scanning
                     }
                 }
 
