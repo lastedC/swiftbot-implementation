@@ -31,17 +31,16 @@ public class draw {
                 System.out.println("Error moving swiftbot.");
                 System.exit(5);
             }
-
-            try {
-                FileWriter fileWriter = new FileWriter(file, true);
-                fileWriter.write("S " + totalTime/1000 + " " + sideLength + " 0 0 \n");
-                fileWriter.close();
-            } catch (IOException exception) {
-                exception.printStackTrace();
-                System.err.println("Error writing to file: " + file.getName());
-            }
-        };
-   }
+        }
+        try {
+            FileWriter fileWriter = new FileWriter(file, true);
+            fileWriter.write("S " + totalTime/1000 + " " + sideLength + " 0 0 \n");
+            fileWriter.close();
+        } catch (IOException exception) {
+            exception.printStackTrace();
+            System.err.println("Error writing to file: " + file.getName());
+        }
+    };
 
    public static void drawTriangle(SwiftBotAPI swiftBot, File file, int side1, int side2, int side3) {
 
