@@ -119,6 +119,8 @@ public class mainProcess {
 
         System.out.println("\n---------------------------------------\n");
 
+        Thread.sleep(500);
+
         int numberOfSquares = 0;
         int numberOfTriangles = 0;
         String mostFrequentShape = "";
@@ -194,7 +196,7 @@ public class mainProcess {
                 }
             }
 
-            Thread.sleep(1000);
+            Thread.sleep(1500);
 
             System.out.println("\n Largest Shape:");
 
@@ -204,7 +206,7 @@ public class mainProcess {
                 System.out.println("\u001B[31m" + "Error finding largest shape." + "\u001B[0m");
             }
 
-            Thread.sleep(1000);
+            Thread.sleep(1500);
 
             System.out.println("\n Most Frequent Shape:");
 
