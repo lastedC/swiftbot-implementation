@@ -22,6 +22,7 @@ public class mainProcess {
             System.out.println("API loaded successfully.");
         } catch (Exception exception) {
             System.out.println("Error loading API" + exception.getMessage());
+            System.exit(5);
         };
 
         File file = new File("shapes.txt");
@@ -134,10 +135,17 @@ public class mainProcess {
                 // Printing shapes in order
                 String[] splitData = data.split(" ");
 
+                if (splitData.length < 5) {
+                    System.out.println("Incomplete data for shape: " + data);
+                    continue;
+                }
+
                 String shape = splitData[0];
                 int averageTime = Integer.valueOf(splitData[1]);
 
                 int side1 = Integer.valueOf(splitData[2]);
+                int side2 = Integer.valueOf(splitData[3]);
+                int side3 = Integer.valueOf(splitData[4]);
 
                 switch (shape) {
                     case "S" -> {
@@ -158,9 +166,6 @@ public class mainProcess {
                         break;
                     }
                     case "T" -> {
-
-                        int side2 = Integer.valueOf(splitData[3]);
-                        int side3 = Integer.valueOf(splitData[4]);
                         System.out.println("Triangle | " + side1 + "cm : " + side2 + "cm : " + side3 + "cm | " + averageTime + " seconds");
 
                         for (int i = 0; i < 3; i++) {
