@@ -133,6 +133,8 @@ public class mainProcess {
                     continue; // continue scanning
                 }
 
+                System.out.println("test line");
+
                 int side1 = Integer.valueOf(parts[1]);
 
                 String shape = parts[0];
