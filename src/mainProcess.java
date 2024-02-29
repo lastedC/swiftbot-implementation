@@ -80,7 +80,7 @@ public class mainProcess {
             if (decodedMessage.isEmpty()) {
                 // do nothing and return to scanning
             } else {
-                System.out.println("Found QR code.");
+                // System.out.println("Found QR code.");
 
                 if (parts.length < 2) {
                     valid = false;
