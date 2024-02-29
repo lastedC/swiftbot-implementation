@@ -80,7 +80,7 @@ public class mainProcess {
             if (decodedMessage.isEmpty()) {
                 // do nothing and return to scanning
             } else {
-                if (checkInput(parts)) {
+                if (!checkInput(parts)) {
                     System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
                     Thread.sleep(200);
                     System.out.println("Please scan QR code.\n");
@@ -93,8 +93,6 @@ public class mainProcess {
                     System.out.println("Please scan QR code.\n");
                     continue; // continue scanning
                 }
-
-                System.out.println("test line");
 
                 int side1 = Integer.valueOf(parts[1]);
 
