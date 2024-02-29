@@ -40,7 +40,9 @@ public class draw {
             exception.printStackTrace();
             System.out.println("\u001B[31m" + "Error writing to file: " + file.getName() + "\u001B[0m");
         }
-
+        
+        System.out.println("\u001B[32m" + "Square drawn successfully.\n" + "\u001B[0m");
+        
         int[] green = {0, 0, 255};
         try {
             for (int i = 0; i < 5; i++) {
@@ -54,7 +56,6 @@ public class draw {
             exception.printStackTrace();
             System.out.println("Error blinking underlights.");
         }
-        System.out.println("\u001B[32m" + "Square drawn successfully.\n" + "\u001B[0m");
     };
 
    public static void drawTriangle(SwiftBotAPI swiftBot, File file, int side1, int side2, int side3) throws InterruptedException {
@@ -124,6 +125,8 @@ public class draw {
             System.out.println("\u001B[31m" + "Error writing to file: " + file.getName() + "\u001B[0m");
         }
 
+        System.out.println("\u001B[32m" + "Triangle drawn successfully.\n" + "\u001B[0m");
+
         int[] green = {0, 0, 255};
         try {
             for (int i = 0; i < 5; i++) {
@@ -137,6 +140,5 @@ public class draw {
             exception.printStackTrace();
             System.out.println("Error blinking underlights.");
         }
-        System.out.println("\u001B[32m" + "Triangle drawn successfully.\n" + "\u001B[0m");
     }
 }
