@@ -72,6 +72,7 @@ public class mainProcess {
                     case "S" -> {
                         System.out.println("Drawing Square with side length of " + side1);
                         draw.drawSquare(swiftBot, file, side1);
+                        System.out.println("Scanning for QR code");
                     }
 
                     case "T" -> {
@@ -81,6 +82,7 @@ public class mainProcess {
                         } catch (Exception exception) {
                             System.out.println("Error processing triangle sides.");
                         }
+                        System.out.println("Scanning for QR code");
                     }
 
                     default -> {
@@ -174,7 +176,7 @@ public class mainProcess {
             Thread.sleep(1000);
 
             scanner.close();
-            file.delete();
+            // file.delete();
         } catch (FileNotFoundException exception) {
             exception.printStackTrace();
             System.out.println("Error finding file.");
