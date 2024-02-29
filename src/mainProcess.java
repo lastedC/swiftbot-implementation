@@ -19,14 +19,14 @@ public class mainProcess {
 
         try {
             swiftBot = new SwiftBotAPI();
-            System.out.println("\nAPI loaded successfully.");
+            System.out.println("API loaded successfully.");
         } catch (Exception exception) {
             System.out.println("Error loading API" + exception.getMessage());
         };
 
         File file = new File("shapes.txt");
 
-        System.out.println("\nCreating file...");
+        System.out.println("Creating file...");
         if (file.createNewFile()) {
             System.out.println("File created: " + file.getName());
         } else {
@@ -46,7 +46,7 @@ public class mainProcess {
             }
         });
 
-        System.out.println("\nStarting program...\n");
+        System.out.println("\nStarting program...");
         Thread.sleep(1000);
         System.out.println("\n---------------------------------------\n");
 
