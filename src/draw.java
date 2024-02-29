@@ -20,7 +20,7 @@ public class draw {
             // time needed in milliseconds
             int time = (sideLength / 5) * 1000;
 
-            totalTime += time;
+            totalTime += time + 2500;
 
             try {
                 swiftBot.move(25, 25, time);
@@ -43,7 +43,7 @@ public class draw {
         };
    }
 
-   public static void drawTriangle(SwiftBotAPI swiftBot, int side1, int side2, int side3) {
+   public static void drawTriangle(SwiftBotAPI swiftBot, File file, int side1, int side2, int side3) {
 
         if (!check.checkSideLength(side1, side2, side3)) {
             System.out.println("The length provided is invalid. Pleae make sure it is between 15 and 85.");
@@ -56,6 +56,8 @@ public class draw {
         };
 
         double[] angles = check.calculateAngles(side1, side2, side3);
+
+        int totalTime = 0;
 
         for (int sidesDrawn = 0; sidesDrawn < 3; sidesDrawn++) {
 
@@ -82,39 +84,31 @@ public class draw {
 
             System.out.println("Current angle: " + currentAngle); // output for test purposes only
             int time = (sideLength / 5) * 1000;
+            int turnTime = 0;
 
             try {
-                swiftBot.move(100, 100, time);
+                swiftBot.move(25, 25, time);
 
                 // calculate turn time using currentAngle
 
-                swiftBot.move(100, 0, 600);
+                turnTime = (int) ((Math.toRadians(currentAngle) / 5) * 1000);
+
+                totalTime += time + turnTime;
+
+                swiftBot.move(25, 0, turnTime);
             } catch (Exception exception) {
                 System.out.println("Error moving swiftbot.");
             }
 
         }
 
-    // while(sidesDrawn < 3) {
-
-    //     int leftSpeed = -100;
-    //     int rightSpeed = 100;
-    //     int wheelbase = 10;
-
-    //     double rightWheelDistance, leftWheelDistance;
-    //     double R = wheelbase * (rightSpeed - leftSpeed) / (2 * (rightSpeed + leftSpeed));
-
-    //     rightWheelDistance = Math.PI * R * angles[sidesDrawn] / 180.0; // Convert angle to radians
-    //     leftWheelDistance = Math.PI * (R + wheelbase) * angles[sidesDrawn] / 180.0; // Convert angle to radians
-
-    //     // Find the time required by the slower-moving wheel
-    //     double slowerSpeed = Math.min(Math.abs(rightSpeed), Math.abs(leftSpeed));
-    //     double turnTime = Math.abs(slowerSpeed) != 0 ? Math.abs(leftWheelDistance) / Math.abs(slowerSpeed) : 0;
-
-    //     moveRobot.moveForward(currentSide);
-    //     // Turns the bot 90 degrees clockwise //
-    //     //API.move(leftSpeed, rightSpeed, turnTime);
-    //     sidesDrawn += 1;
-    // }
-}
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write("T " + totalTime/1000 + " " + side1 + " " + side2 + " " + side3);
+            fileWriter.close();
+        } catch (IOException exception) {
+            exception.printStackTrace();
+            System.err.println("Error writing to file: " + file.getName());
+        }
+    }
 }
