@@ -127,7 +127,7 @@ public class mainProcess {
             String largestShapeName = largestShape[0];
             int largestShapeSize = Integer.valueOf(largestShape[1]);
 
-            System.out.println("  Shape  |    Side Lengths    | Time To Draw\n------------------------------------------");
+            System.out.println("  Shape  |    Side Lengths    | Time To Draw\n--------------------------------------------");
 
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
@@ -149,41 +149,41 @@ public class mainProcess {
                 int side2 = Integer.valueOf(splitData[3]);
                 int side3 = Integer.valueOf(splitData[4]);
 
-                // switch (shape) {
-                    // case "S" -> {
-                        // System.out.println(" Square  |        " + side1 + "cm        | " + averageTime + " seconds");
+                switch (shape) {
+                    case "S" -> {
+                        System.out.println(" Square  |        " + side1 + "cm        | " + averageTime + " seconds");
 
-                        // /*
-                        // * "  Shape  |    Side Lengths    | Time To Draw"
-                        // * "------------------------------------------"
-                        // * " Square  |        14cm        | 18 seconds"
-                        // * "Triangle | 12cm : 16cm : 15cm | 8 seconds"
-                        // */
+                        /*
+                        * "  Shape  |    Side Lengths    | Time To Draw"
+                        * "------------------------------------------"
+                        * " Square  |        14cm        | 18 seconds"
+                        * "Triangle | 12cm : 16cm : 15cm | 8 seconds"
+                        */
 
-                        // if (Integer.valueOf(side1) > largestShapeSize) {
-                        //     largestShapeName = "Square";
-                        //     largestShapeSize = side1;
-                        // }
-                        // numberOfSquares += 1;
-                        // break;
-                    // }
+                        if (Integer.valueOf(side1) > largestShapeSize) {
+                            largestShapeName = "Square";
+                            largestShapeSize = side1;
+                        }
+                        numberOfSquares += 1;
+                        break;
+                    }
                     // case "T" -> {
-                        // System.out.println("Triangle | " + side1 + "cm : " + side2 + "cm : " + side3 + "cm | " + averageTime + " seconds");
+                    //     System.out.println("Triangle | " + side1 + "cm : " + side2 + "cm : " + side3 + "cm | " + averageTime + " seconds");
 
-                        // for (int i = 0; i < 3; i++) {
-                        //     if (Integer.valueOf(splitData[i]) > largestShapeSize) {
-                        //         largestShapeName = "Triangle";
-                        //         largestShapeSize = Integer.valueOf(splitData[i]);
-                        //     }
-                        // }
-                        // numberOfTriangles += 1;
-                        // break;
+                    //     for (int i = 0; i < 3; i++) {
+                    //         if (Integer.valueOf(splitData[i]) > largestShapeSize) {
+                    //             largestShapeName = "Triangle";
+                    //             largestShapeSize = Integer.valueOf(splitData[i]);
+                    //         }
+                    //     }
+                    //     numberOfTriangles += 1;
+                    //     break;
                     // }
-                    // default -> {
-                        // shape = "\u001B[31m" + "U" + "\u001B[0m";
-                        // side1 = side2 = side3 = 0;
-                    // }
-                // }
+                    default -> {
+                        shape = "\u001B[31m" + "U" + "\u001B[0m";
+                        side1 = side2 = side3 = 0;
+                    }
+                }
             }
 
             System.out.println("\n Largest Shape:");
