@@ -176,7 +176,7 @@ public class main {
 
         // output largest shape // DONE
 
-        // output most frequent drawn shape
+        // output most frequent drawn shape // DONE
 
         // output average time it took to draw all shapes DONE
     }
