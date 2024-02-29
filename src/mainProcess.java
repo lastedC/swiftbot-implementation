@@ -105,7 +105,7 @@ public class mainProcess {
         try {
             Scanner scanner = new Scanner(file);
 
-            String string = "B 0";
+            String string = "B 0 0 0";
             String[] largestShape = string.split(" ");
 
             System.out.println("length of largestShape is: " + largestShape.length );
