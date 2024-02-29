@@ -25,7 +25,7 @@ public class draw {
             try {
                 swiftBot.move(100, 100, time);
 
-                swiftBot.move(100, 0, 5000);
+                swiftBot.move(25, 0, 5000);
             } catch (Exception exception) {
                 exception.printStackTrace();
                 System.out.println("Error moving swiftbot.");
@@ -34,7 +34,7 @@ public class draw {
 
             try {
                 FileWriter fileWriter = new FileWriter(file);
-                fileWriter.write("Square " + totalTime + " " + sideLength + " 0 0");
+                fileWriter.write("S " + totalTime + " " + sideLength + " 0 0");
                 fileWriter.close();
             } catch (IOException exception) {
                 exception.printStackTrace();

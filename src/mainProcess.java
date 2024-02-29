@@ -108,11 +108,15 @@ public class mainProcess {
             String string = "B 0";
             String[] largestShape = string.split(" ");
 
+            System.out.println("length of largestShape is: " + largestShape.length );
+
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
 
                 // Printing shapes in order
                 String[] splitData = data.split(" ");
+
+                System.out.println("length of splitData is: " + splitData.length );
 
                 String shape = splitData[0];
                 int averageTime = Integer.valueOf(splitData[1]);
