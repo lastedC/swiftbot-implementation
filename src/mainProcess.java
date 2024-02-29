@@ -7,11 +7,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import swiftbot.*;
 
-public class main {
+public class mainProcess {
 
     static SwiftBotAPI swiftBot;
 
-    public static void start(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) throws InterruptedException, IOException {
 
         try {
             swiftBot = new SwiftBotAPI();
