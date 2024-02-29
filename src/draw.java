@@ -1,8 +1,13 @@
 import swiftbot.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class draw {
 
-    public static void drawSquare(SwiftBotAPI swiftBot, int sideLength) {
+    public static void drawSquare(SwiftBotAPI swiftBot, File file, int sideLength) {
+
+        int totalTime = 0;
 
         if (!check.checkSideLength(sideLength)) {
             System.out.println("The length provided is invalid. Pleae make sure it is between 15 and 85.");
@@ -15,7 +20,7 @@ public class draw {
             // time needed in milliseconds
             int time = (sideLength / 5) * 1000;
 
-            System.out.println("time to move is " + time);
+            totalTime += time;
 
             try {
                 swiftBot.move(100, 100, time);
@@ -25,6 +30,15 @@ public class draw {
                 exception.printStackTrace();
                 System.out.println("Error moving swiftbot.");
                 System.exit(5);
+            }
+
+            try {
+                FileWriter fileWriter = new FileWriter(file);
+                fileWriter.write("Square " + totalTime + " " + sideLength + " 0 0");
+                fileWriter.close();
+            } catch (IOException exception) {
+                exception.printStackTrace();
+                System.err.println("Error writing to file: " + file.getName());
             }
         };
    }

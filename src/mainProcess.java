@@ -70,7 +70,7 @@ public class mainProcess {
                 switch(shape) {
                     case "S" -> {
                         System.out.println("Drawing Square with side length of " + side1);
-                        draw.drawSquare(swiftBot, side1);
+                        draw.drawSquare(swiftBot, file, side1);
                     }
 
                     case "T" -> {
@@ -92,7 +92,7 @@ public class mainProcess {
 
     public static void end(File file) throws InterruptedException {
 
-        // FILE FORMAT: "shape averageTime side1 side2 side3"
+        // FILE FORMAT: "shape time side1 side2 side3"
 
         /* Output Template:
          * Shape : SideLengths : AverageTime
@@ -116,13 +116,16 @@ public class mainProcess {
 
                 String shape = splitData[0];
                 int averageTime = Integer.valueOf(splitData[1]);
-                int[] sides = {Integer.valueOf(splitData[2]), Integer.valueOf(splitData[3]), Integer.valueOf(splitData[4])};
+
+                int side1 = Integer.valueOf(splitData[2]);
+                int side2 = Integer.valueOf(splitData[3]);
+                int side3 = Integer.valueOf(splitData[4]);
 
                 switch (shape) {
                     case "S" -> {
-                        System.out.println("Square : " + sides[0] + "cm : " + averageTime + " seconds");
+                        System.out.println("Square : " + side1 + "cm : " + averageTime + " seconds");
 
-                        if (Integer.valueOf(sides[0]) > Integer.valueOf(largestShape[1])) {
+                        if (Integer.valueOf(side1) > Integer.valueOf(largestShape[1])) {
                             largestShape[0] = "Square";
                             largestShape[1] = splitData[1];
                         }
@@ -130,14 +133,12 @@ public class mainProcess {
                         numberOfSquares += 1;
                     }
                     case "T" -> {
-                        System.out.println("Triangle : " + sides[0] + "cm " + sides[1] + "cm " + sides[3] + "cm : " + averageTime + " seconds");
+                        System.out.println("Triangle : " + side1 + "cm " + side2 + "cm " + side3 + "cm : " + averageTime + " seconds");
 
-                        for (int i = 0; i < 3; i++) {
-                            if (Integer.valueOf(sides[i]) > Integer.valueOf(largestShape[1])) {
-                                largestShape[0] = "Triangle";
-                                for (int v = 1; v <= 3; v++) {
-                                    largestShape[v] = splitData[v];
-                                }
+                        if (Integer.valueOf(side1) > Integer.valueOf(largestShape[1]) || Integer.valueOf(side2) > Integer.valueOf(largestShape[2]) || (Integer.valueOf(side3) > Integer.valueOf(largestShape[3]))) {
+                            largestShape[0] = "Triangle";
+                            for (int v = 1; v <= 3; v++) {
+                                largestShape[v] = splitData[v];
                             }
                         }
 
@@ -161,6 +162,8 @@ public class mainProcess {
                 
                 System.out.println("The most frequently drawn shape was : " + mostFrequentShape);
             }
+
+            Thread.sleep(1000);
 
             scanner.close();
             file.delete();
