@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class draw {
 
-    public static void drawSquare(SwiftBotAPI swiftBot, File file, int sideLength) {
+    public static void drawSquare(SwiftBotAPI swiftBot, File file, int sideLength) throws InterruptedException {
 
         int totalTime = 0;
 
@@ -41,6 +41,19 @@ public class draw {
             System.out.println("\u001B[31m" + "Error writing to file: " + file.getName() + "\u001B[0m");
         }
 
+        int[] green = {0, 255, 0};
+        try {
+            for (int i = 0; i < 5; i++) {
+                swiftBot.fillUnderlights(green);
+                Thread.sleep(500);
+                swiftBot.disableUnderlights();
+
+            }
+            // swiftBot.fillUnderlights(green);
+        } catch (IllegalArgumentException exception) {
+            exception.printStackTrace();
+            System.out.println("Error blinking underlights.");
+        }
         System.out.println("\u001B[32m" + "Square drawn successfully.\n" + "\u001B[0m");
     };
 

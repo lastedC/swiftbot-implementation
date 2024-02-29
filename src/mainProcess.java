@@ -190,7 +190,7 @@ public class mainProcess {
             System.out.println("\n Largest Shape:");
 
             if (largestShapeName != "B") {
-                System.out.println("Shape: " + largestShapeName + " | Largest side: " + largestShapeSize + "cm");
+                System.out.println("Shape: " + largestShapeName + " ]| Largest side: " + largestShapeSize + "cm");
             } else {
                 System.out.println("\u001B[31m" + "Error finding largest shape." + "\u001B[0m");
             }
