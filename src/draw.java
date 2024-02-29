@@ -10,7 +10,7 @@ public class draw {
         int totalTime = 0;
 
         if (!check.checkSideLength(sideLength)) {
-            System.out.println("The length provided is invalid. Pleae make sure it is between 15 and 85.");
+            System.out.println("\u001B[33m" + "Invalid side length.\nMust be between 15cm and 85cm.");
             return;
         };
 
@@ -28,7 +28,7 @@ public class draw {
                 swiftBot.move(25, 0, 2500);
             } catch (Exception exception) {
                 exception.printStackTrace();
-                System.out.println("Error moving swiftbot.");
+                System.out.println("\u001B[31m" + "Error moving swiftbot.");
                 System.exit(5);
             }
         }
@@ -38,19 +38,21 @@ public class draw {
             fileWriter.close();
         } catch (IOException exception) {
             exception.printStackTrace();
-            System.err.println("Error writing to file: " + file.getName());
+            System.err.println("\u001B[31m" + "Error writing to file: " + file.getName());
         }
+
+        System.out.println("\u001B[32m" + "Square drawn successfully.\n");
     };
 
    public static void drawTriangle(SwiftBotAPI swiftBot, File file, int side1, int side2, int side3) {
 
         if (!check.checkSideLength(side1, side2, side3)) {
-            System.out.println("The length provided is invalid. Pleae make sure it is between 15 and 85.");
+            System.out.println("\u001B[33m" + "Invalid side length.\nMust be between 15cm and 85cm.");
             return;
         };
 
         if (!check.checkTriangle(side1, side2, side3)) {
-            System.out.println("The side lengths provided are unable to create a truangle.");
+            System.out.println("\u001B[33m" + "Lengths provided are unable to create a triangle.");
             return;
         };
 

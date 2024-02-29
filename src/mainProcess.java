@@ -52,7 +52,7 @@ public class mainProcess {
 
         String decodedMessage = "";
         // Continously scanning for a QR code using the camera.
-        System.out.println("Please scan QR code.");
+        System.out.println("Please scan QR code.\n");
         while (run.get()) {
 
             try {
@@ -80,14 +80,14 @@ public class mainProcess {
 
                 switch(shape) {
                     case "S" -> {
-                        System.out.println("Drawing Square with side length of " + side1);
+                        System.out.println("Drawing square. Side Length: " + side1);
                         draw.drawSquare(swiftBot, file, side1);
                         System.out.println("Scanning for QR code");
                     }
 
                     case "T" -> {
                         try {
-                        System.out.println("Drawing Square with side lengths of " + parts[1] + " " + parts[2] + " " + parts[3]);
+                        System.out.println("Drawing triangle. Side lengths: " + parts[1] + " : " + parts[2] + " : " + parts[3]);
                         draw.drawTriangle(swiftBot, file, Integer.valueOf(side1), Integer.valueOf(parts[2]), Integer.valueOf(parts[3]));
                         } catch (Exception exception) {
                             System.out.println("Error processing triangle sides.");
@@ -175,11 +175,15 @@ public class mainProcess {
                 mostFrequentShape = "Square";
             } else if (numberOfSquares < numberOfTriangles) {
                 mostFrequentShape = "Triangle";
-            } else {
+            } else if (numberOfSquares == numberOfTriangles) {
                 mostFrequentShape = "Square & Triangle";
+            } else {
+                mostFrequentShape = " ";
             }
             
-            System.out.println("The most frequently drawn shape was : " + mostFrequentShape);
+            if (mostFrequentShape != " ") {
+                System.out.println("The most frequently drawn shape was : " + mostFrequentShape);
+            }
 
             Thread.sleep(1000);
 

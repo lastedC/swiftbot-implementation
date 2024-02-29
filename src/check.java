@@ -11,6 +11,8 @@ public class check {
 
     public static boolean checkSideLength(int... sides) {
 
+        boolean valid = false;
+
         int side1, side2, side3;
 
         if (sides.length < 1) {
@@ -18,7 +20,7 @@ public class check {
 
             if (side1 < 15 && side1 > 85) {
                 System.err.println("Invalid side length");
-                return false;
+                return valid = false;
             }
         }
 
@@ -31,11 +33,11 @@ public class check {
             side2 < 15 && side2 > 85 &&
             side3 < 15 && side3 > 85) {
             System.err.println("Invaluded side length");
-            return false;
+            return valid = false;
             }
         }
 
-        return true;
+        return valid = true;
         
     }
 
