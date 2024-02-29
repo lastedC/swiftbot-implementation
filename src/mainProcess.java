@@ -13,13 +13,13 @@ public class mainProcess {
 
     public static void main(String[] args) throws InterruptedException, IOException {
 
-        class invalidInput {
-            static void invalidInputMessage() throws InterruptedException {
-                System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
-                Thread.sleep(200);
-                System.out.println("Please scan QR code.\n");
-            }
-        }
+        // class invalidInput {
+        //     static void invalidInputMessage() throws InterruptedException {
+        //         System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
+        //         Thread.sleep(200);
+        //         System.out.println("Please scan QR code.\n");
+        //     }
+        // }
 
         System.out.println("---------------------------------------\nDRAW SHAPE PROGRAM     By: Shihab Marey\n---------------------------------------");
         Thread.sleep(1000);
@@ -127,7 +127,9 @@ public class mainProcess {
                 }
 
                 if (!valid) {
-                    invalidInput.invalidInputMessage();
+                    System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
+                    Thread.sleep(200);
+                    System.out.println("Please scan QR code.\n");
                     continue; // continue scanning
                 }
 
