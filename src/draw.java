@@ -23,7 +23,7 @@ public class draw {
             totalTime += time;
 
             try {
-                swiftBot.move(50, 50, time);
+                swiftBot.move(25, 25, time);
 
                 swiftBot.move(50, 0, 2500);
             } catch (Exception exception) {
