@@ -103,6 +103,11 @@ public class mainProcess {
 
     public static void end(File file) throws InterruptedException {
 
+        if (file.length() == 0) {
+            System.out.println("No shapes printed.");
+            terminate();
+        }
+
         // FILE FORMAT: "shape time side1 side2 side3"
 
         /* Output Template:
@@ -197,7 +202,7 @@ public class mainProcess {
             }
 
             Thread.sleep(1000);
-            
+
             System.out.println("\n Most Frequent Shape:");
 
             int numberofInsantces = 0;
@@ -228,6 +233,10 @@ public class mainProcess {
             System.out.println("\u001B[31m" + "Error finding file." + "\u001B[0m");
         }
 
+        terminate();
+    }
+
+    public static void terminate() throws InterruptedException {
         int[] red = {255, 0, 0};
         try {
             swiftBot.fillUnderlights(red);
