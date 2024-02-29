@@ -149,8 +149,15 @@ public class mainProcess {
                     }
                 }
 
+                if (largestShape[0] == "Square") {
+                    System.out.println("The largest shape was a " + largestShape[0] + " with side(s) of : " + largestShape[1] + "cm");
+                } else if (largestShape[0] == "Triange") {
+                    System.out.println("The largest shape was a " + largestShape[0] + " with side(s) of : " + largestShape[1] + "cm | " + largestShape[2] + "cm | " + largestShape[3] + "cm");
+                } else {
+                    System.out.println("Error finding largest shape.");
+                }
 
-                System.out.println("The largest shape was a " + largestShape[0] + " with side(s) of : " + largestShape[1] + "cm | " + largestShape[2] + "cm | " + largestShape[3] + "cm");
+                
 
                 if (numberOfSquares > numberOfTriangles) {
                     mostFrequentShape = "Square";

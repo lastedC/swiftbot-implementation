@@ -25,7 +25,7 @@ public class draw {
             try {
                 swiftBot.move(25, 25, time);
 
-                swiftBot.move(50, 0, 2500);
+                swiftBot.move(25, 0, 2500);
             } catch (Exception exception) {
                 exception.printStackTrace();
                 System.out.println("Error moving swiftbot.");
