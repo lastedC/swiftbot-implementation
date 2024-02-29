@@ -65,6 +65,8 @@ public class mainProcess {
 
                 int side1 = Integer.valueOf(parts[1]);
 
+                System.out.println("side1 value is: " + side1);
+
                 String shape = parts[0];
 
                 switch(shape) {
