@@ -10,7 +10,10 @@ public class draw {
         };
 
         for (int sidesDrawn = 0; sidesDrawn < 4; sidesDrawn++) {
-            int time = sideLength / 100;
+            // assume speed is 5m/s
+            // distance needed in cm
+            // time needed in milliseconds
+            int time = (sideLength / 5) * 1000;
 
             try {
                 swiftBot.move(100, 100, time);
