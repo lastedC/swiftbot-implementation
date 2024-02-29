@@ -80,7 +80,12 @@ public class mainProcess {
             if (decodedMessage.isEmpty()) {
                 // do nothing and return to scanning
             } else {
-                checkInput(parts);
+                if (checkInput(parts)) {
+                    System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
+                    Thread.sleep(200);
+                    System.out.println("Please scan QR code.\n");
+                    continue;
+                }
 
                 if (!valid) {
                     System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
