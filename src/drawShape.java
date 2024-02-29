@@ -3,13 +3,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class draw {
+public class drawShape {
 
     public static void drawSquare(SwiftBotAPI swiftBot, File file, int sideLength) throws InterruptedException {
 
         int totalTime = 0;
 
-        if (!check.checkSideLength(sideLength)) {
+        if (!checkShape.checkSideLength(sideLength)) {
             System.out.println("\u001B[33m" + "Invalid side length.\nMust be between 15cm and 85cm." + "\u001B[0m");
             return;
         };
@@ -42,7 +42,7 @@ public class draw {
         }
         
         System.out.println("\u001B[32m" + "Square drawn successfully.\n" + "\u001B[0m");
-        
+
         int[] green = {0, 0, 255};
         try {
             for (int i = 0; i < 5; i++) {
@@ -60,17 +60,17 @@ public class draw {
 
    public static void drawTriangle(SwiftBotAPI swiftBot, File file, int side1, int side2, int side3) throws InterruptedException {
 
-        if (!check.checkSideLength(side1, side2, side3)) {
+        if (!checkShape.checkSideLength(side1, side2, side3)) {
             System.out.println("\u001B[33m" + "Invalid side length.\nMust be between 15cm and 85cm." + "\u001B[0m");
             return;
         };
 
-        if (!check.checkTriangle(side1, side2, side3)) {
+        if (!checkShape.checkTriangle(side1, side2, side3)) {
             System.out.println("\u001B[33m" + "Lengths provided are unable to create a triangle." + "\u001B[0m");
             return;
         };
 
-        double[] angles = check.calculateAngles(side1, side2, side3);
+        double[] angles = checkShape.calculateAngles(side1, side2, side3);
 
         int totalTime = 0;
 

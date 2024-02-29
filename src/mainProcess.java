@@ -79,14 +79,14 @@ public class mainProcess {
                 switch(shape) {
                     case "S" -> {
                         System.out.println("Drawing square. Side Length: " + parts[1]);
-                        draw.drawSquare(swiftBot, file, side1);
+                        drawShape.drawSquare(swiftBot, file, side1);
                         System.out.println("Scanning for QR code\n");
                     }
 
                     case "T" -> {
                         try {
                         System.out.println("Drawing triangle. Side lengths: " + parts[1] + " : " + parts[2] + " : " + parts[3]);
-                        draw.drawTriangle(swiftBot, file, Integer.valueOf(side1), Integer.valueOf(parts[2]), Integer.valueOf(parts[3]));
+                        drawShape.drawTriangle(swiftBot, file, Integer.valueOf(side1), Integer.valueOf(parts[2]), Integer.valueOf(parts[3]));
                         } catch (Exception exception) {
                             System.out.println("Error processing triangle sides.");
                         }
