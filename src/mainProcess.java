@@ -125,7 +125,6 @@ public class mainProcess {
             String[] largestShape = string.split(" ");
 
             String largestShapeName = largestShape[0];
-            System.out.println("largest shape name: " + largestShapeName);
             int largestShapeSize = Integer.valueOf(largestShape[1]);
 
             System.out.println("  Shape  |    Side Lengths    | Time To Draw\n--------------------------------------------");
@@ -187,14 +186,18 @@ public class mainProcess {
                 }
             }
 
+            Thread.sleep(1000);
+
             System.out.println("\n Largest Shape:");
 
             if (largestShapeName != "B") {
-                System.out.println("Shape: " + largestShapeName + " ]| Largest side: " + largestShapeSize + "cm");
+                System.out.println("Shape: " + largestShapeName + " | Largest side: " + largestShapeSize + "cm");
             } else {
                 System.out.println("\u001B[31m" + "Error finding largest shape." + "\u001B[0m");
             }
 
+            Thread.sleep(1000);
+            
             System.out.println("\n Most Frequent Shape:");
 
             int numberofInsantces = 0;
@@ -231,8 +234,8 @@ public class mainProcess {
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
         }
-        System.out.println("\u001B[35m" + "\nSystem terminating in 2 seconds..." + "\u001B[0m");
-        Thread.sleep(2000);
+        System.out.println("\u001B[35m" + "\nSystem terminating in 5 seconds..." + "\u001B[0m");
+        Thread.sleep(5000);
         try {
             swiftBot.disableUnderlights();
         } catch (IllegalArgumentException exception) {
