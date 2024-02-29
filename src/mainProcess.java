@@ -106,6 +106,7 @@ public class mainProcess {
         swiftBot.disableButton(Button.X);
 
         if (file.length() == 0) {
+            file.delete();
             System.out.println("No shapes drawn.");
             terminate();
         }
