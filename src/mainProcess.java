@@ -119,12 +119,15 @@ public class mainProcess {
 
         try {
 
-            System.out.println("\nOutputing all shapes drawn:\n");
+            System.out.println("\n All shapes:\n");
 
             Scanner scanner = new Scanner(file);
 
-            String string = "B 0 0 0"; // B -> Blank
+            String string = "B 0"; // B -> Blank | 0 -> Largest Side
             String[] largestShape = string.split(" ");
+
+            String largestShapeName = largestShape[0];
+            int largestShapeSize = Integer.valueOf(largestShape[1]);
 
             System.out.println("  Shape  |    Side Lengths    | Time To Draw\n------------------------------------------");
 
@@ -152,9 +155,9 @@ public class mainProcess {
                         * "Triangle | 12cm : 16cm : 15cm | 8 seconds"
                         */
 
-                        if (Integer.valueOf(side1) > Integer.valueOf(largestShape[1])) {
-                            largestShape[0] = "Square";
-                            largestShape[1] = Integer.toString(side1);
+                        if (Integer.valueOf(side1) > largestShapeSize) {
+                            largestShapeName = "Square";
+                            largestShapeSize = side1;
                         }
 
                         numberOfSquares += 1;
@@ -162,10 +165,10 @@ public class mainProcess {
                     case "T" -> {
                         System.out.println("Triangle | " + side1 + "cm : " + side2 + "cm : " + side3 + "cm | " + averageTime + " seconds");
 
-                        if (Integer.valueOf(side1) > Integer.valueOf(largestShape[1]) || Integer.valueOf(side2) > Integer.valueOf(largestShape[2]) || (Integer.valueOf(side3) > Integer.valueOf(largestShape[3]))) {
-                            largestShape[0] = "Triangle";
-                            for (int v = 1; v <= 3; v++) {
-                                largestShape[v] = splitData[v+1];
+                        for (int i = 0; i < 3; i++) {
+                            if (Integer.valueOf(splitData[i]) > largestShapeSize) {
+                                largestShapeName = "Triangle";
+                                largestShapeSize = Integer.valueOf(splitData[i]);
                             }
                         }
 
@@ -179,12 +182,10 @@ public class mainProcess {
 
             System.out.println("\n Largest Shape:");
 
-            if (largestShape[0] == "Square") {
-                System.out.println("Shape: " + largestShape[0] + "| Side(s): " + largestShape[1] + "cm");
-            } else if (largestShape[0] == "Triange") {
-                System.out.println("Shape: " + largestShape[0] + "| Side(s): " + largestShape[1] + "cm : " + largestShape[2] + "cm : " + largestShape[3] + "cm");
+            if (largestShapeName != "B") {
+                System.out.println("Shape: " + largestShapeName + "| Largest side: " + largestShapeSize + "cm");
             } else {
-                System.out.println("Error finding largest shape.");
+                System.out.println("\u001B[31m" + "Error finding largest shape." + "\u001B[0m");
             }
 
             System.out.println("\n Most Frequent Shape:");
