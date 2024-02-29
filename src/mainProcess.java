@@ -108,15 +108,11 @@ public class mainProcess {
             String string = "B 0 0 0";
             String[] largestShape = string.split(" ");
 
-            System.out.println("length of largestShape is: " + largestShape.length );
-
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
 
                 // Printing shapes in order
                 String[] splitData = data.split(" ");
-
-                System.out.println("length of splitData is: " + splitData.length );
 
                 String shape = splitData[0];
                 int averageTime = Integer.valueOf(splitData[1]);
@@ -131,7 +127,7 @@ public class mainProcess {
 
                         if (Integer.valueOf(side1) > Integer.valueOf(largestShape[1])) {
                             largestShape[0] = "Square";
-                            largestShape[1] = splitData[1];
+                            largestShape[1] = Integer.toString(side1);
                         }
 
                         numberOfSquares += 1;
@@ -142,7 +138,7 @@ public class mainProcess {
                         if (Integer.valueOf(side1) > Integer.valueOf(largestShape[1]) || Integer.valueOf(side2) > Integer.valueOf(largestShape[2]) || (Integer.valueOf(side3) > Integer.valueOf(largestShape[3]))) {
                             largestShape[0] = "Triangle";
                             for (int v = 1; v <= 3; v++) {
-                                largestShape[v] = splitData[v];
+                                largestShape[v] = splitData[v+1];
                             }
                         }
 
