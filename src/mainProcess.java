@@ -82,7 +82,7 @@ public class mainProcess {
                     case "S" -> {
                         System.out.println("Drawing square. Side Length: " + side1);
                         draw.drawSquare(swiftBot, file, side1);
-                        System.out.println("Scanning for QR code");
+                        System.out.println("Scanning for QR code\n");
                     }
 
                     case "T" -> {
@@ -92,7 +92,7 @@ public class mainProcess {
                         } catch (Exception exception) {
                             System.out.println("Error processing triangle sides.");
                         }
-                        System.out.println("Scanning for QR code");
+                        System.out.println("Scanning for QR code\n");
                     }
 
                     default -> {
@@ -111,14 +111,19 @@ public class mainProcess {
          * Shape : SideLengths : AverageTime
          */
 
+        System.out.println("\n---------------------------------------\n");
+
         int numberOfSquares = 0;
         int numberOfTriangles = 0;
         String mostFrequentShape = "";
 
         try {
+
+            System.out.println("\nOutputing all shapes drawn:\n");
+
             Scanner scanner = new Scanner(file);
 
-            String string = "B 0 0 0";
+            String string = "B 0 0 0"; // B -> Blank
             String[] largestShape = string.split(" ");
 
             while (scanner.hasNextLine()) {
@@ -136,7 +141,10 @@ public class mainProcess {
 
                 switch (shape) {
                     case "S" -> {
-                        System.out.println("Square : " + side1 + "cm : " + averageTime + " seconds");
+                        System.out.println(" Square  |        " + side1 + "cm        | " + averageTime + " seconds");
+
+                        // System.out.println(" Square  |        14cm        | 18 seconds");
+                        // System.out.println("Triangle | 12cm : 16cm : 15cm | 8 seconds");
 
                         if (Integer.valueOf(side1) > Integer.valueOf(largestShape[1])) {
                             largestShape[0] = "Square";
@@ -146,7 +154,7 @@ public class mainProcess {
                         numberOfSquares += 1;
                     }
                     case "T" -> {
-                        System.out.println("Triangle : " + side1 + "cm " + side2 + "cm " + side3 + "cm : " + averageTime + " seconds");
+                        System.out.println("Triangle | " + side1 + "cm : " + side2 + "cm : " + side3 + "cm | " + averageTime + " seconds");
 
                         if (Integer.valueOf(side1) > Integer.valueOf(largestShape[1]) || Integer.valueOf(side2) > Integer.valueOf(largestShape[2]) || (Integer.valueOf(side3) > Integer.valueOf(largestShape[3]))) {
                             largestShape[0] = "Triangle";

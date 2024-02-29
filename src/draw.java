@@ -38,7 +38,7 @@ public class draw {
             fileWriter.close();
         } catch (IOException exception) {
             exception.printStackTrace();
-            System.err.println("\u001B[31m" + "Error writing to file: " + file.getName() + "\u001B[0m");
+            System.out.println("\u001B[31m" + "Error writing to file: " + file.getName() + "\u001B[0m");
         }
 
         System.out.println("\u001B[32m" + "Square drawn successfully.\n" + "\u001B[0m");
@@ -83,7 +83,6 @@ public class draw {
                 }
             }
 
-            System.out.println("Current angle: " + currentAngle); // output for test purposes only
             int time = (sideLength / 5) * 1000;
             int turnTime = 0;
 
@@ -98,7 +97,7 @@ public class draw {
 
                 swiftBot.move(25, 0, turnTime);
             } catch (Exception exception) {
-                System.out.println("Error moving swiftbot.");
+                System.out.println("\u001B[31m" + "Error moving swiftbot." + "\u001B[0m");
             }
 
         }
@@ -109,7 +108,9 @@ public class draw {
             fileWriter.close();
         } catch (IOException exception) {
             exception.printStackTrace();
-            System.err.println("Error writing to file: " + file.getName());
+            System.out.println("\u001B[31m" + "Error writing to file: " + file.getName() + "\u001B[0m");
         }
+
+        System.out.println("\u001B[32m" + "Triangle drawn successfully.\n" + "\u001B[0m");
     }
 }
