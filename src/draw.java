@@ -50,7 +50,6 @@ public class draw {
                 Thread.sleep(500);
 
             }
-            // swiftBot.fillUnderlights(green);
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
             System.out.println("Error blinking underlights.");
@@ -58,7 +57,7 @@ public class draw {
         System.out.println("\u001B[32m" + "Square drawn successfully.\n" + "\u001B[0m");
     };
 
-   public static void drawTriangle(SwiftBotAPI swiftBot, File file, int side1, int side2, int side3) {
+   public static void drawTriangle(SwiftBotAPI swiftBot, File file, int side1, int side2, int side3) throws InterruptedException {
 
         if (!check.checkSideLength(side1, side2, side3)) {
             System.out.println("\u001B[33m" + "Invalid side length.\nMust be between 15cm and 85cm." + "\u001B[0m");
@@ -125,6 +124,19 @@ public class draw {
             System.out.println("\u001B[31m" + "Error writing to file: " + file.getName() + "\u001B[0m");
         }
 
+        int[] green = {0, 0, 255};
+        try {
+            for (int i = 0; i < 5; i++) {
+                swiftBot.fillUnderlights(green);
+                Thread.sleep(500);
+                swiftBot.disableUnderlights();
+                Thread.sleep(500);
+
+            }
+        } catch (IllegalArgumentException exception) {
+            exception.printStackTrace();
+            System.out.println("Error blinking underlights.");
+        }
         System.out.println("\u001B[32m" + "Triangle drawn successfully.\n" + "\u001B[0m");
     }
 }
