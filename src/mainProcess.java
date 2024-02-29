@@ -131,9 +131,11 @@ public class mainProcess {
 
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
-
-                // Printing shapes in order
                 String[] splitData = data.split(" ");
+                if (splitData.length < 5) {
+                    System.out.println("Invalid data format: " + data);
+                    continue;
+                }
 
                 if (splitData.length < 5) {
                     System.out.println("Incomplete data for shape: " + data);
