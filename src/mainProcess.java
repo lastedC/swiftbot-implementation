@@ -45,7 +45,7 @@ public class mainProcess {
         while (run.get()) {
 
             try {
-                System.out.println("Scanning for QR code...");
+                System.out.println("Scanning for QR code");
                 Thread.sleep(2000);
 
                 BufferedImage img = swiftBot.getQRImage();
@@ -59,7 +59,8 @@ public class mainProcess {
             String[] parts = decodedMessage.split(" ");
 
             if (decodedMessage.isEmpty()) {
-                System.out.println("No QR code was found.");
+                // System.out.println("No QR code was found.");
+                System.err.print(".");
             } else {
                 System.out.println("Found QR code.");
 
