@@ -103,8 +103,10 @@ public class mainProcess {
 
     public static void end(File file) throws InterruptedException {
 
+        swiftBot.disableButton(Button.X);
+
         if (file.length() == 0) {
-            System.out.println("No shapes printed.");
+            System.out.println("No shapes drawn.");
             terminate();
         }
 
