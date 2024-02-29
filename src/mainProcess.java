@@ -138,8 +138,6 @@ public class mainProcess {
                 int averageTime = Integer.valueOf(splitData[1]);
 
                 int side1 = Integer.valueOf(splitData[2]);
-                int side2 = Integer.valueOf(splitData[3]);
-                int side3 = Integer.valueOf(splitData[4]);
 
                 switch (shape) {
                     case "S" -> {
@@ -160,6 +158,9 @@ public class mainProcess {
                         break;
                     }
                     case "T" -> {
+
+                        int side2 = Integer.valueOf(splitData[3]);
+                        int side3 = Integer.valueOf(splitData[4]);
                         System.out.println("Triangle | " + side1 + "cm : " + side2 + "cm : " + side3 + "cm | " + averageTime + " seconds");
 
                         for (int i = 0; i < 3; i++) {
