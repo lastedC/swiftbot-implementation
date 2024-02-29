@@ -42,10 +42,11 @@ public class mainProcess {
 
         String decodedMessage = "";
         // Continously scanning for a QR code using the camera.
+        System.out.println("Scanning for QR code");
         while (run.get()) {
 
             try {
-                System.out.println("Scanning for QR code");
+                // System.out.println("Scanning for QR code");
                 Thread.sleep(2000);
 
                 BufferedImage img = swiftBot.getQRImage();
@@ -60,7 +61,6 @@ public class mainProcess {
 
             if (decodedMessage.isEmpty()) {
                 // System.out.println("No QR code was found.");
-                System.err.print(".");
             } else {
                 System.out.println("Found QR code.");
 
