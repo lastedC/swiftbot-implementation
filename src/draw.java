@@ -41,7 +41,7 @@ public class draw {
             System.out.println("\u001B[31m" + "Error writing to file: " + file.getName() + "\u001B[0m");
         }
 
-        int[] green = {0, 255, 0};
+        int[] green = {0, 0, 255};
         try {
             for (int i = 0; i < 5; i++) {
                 swiftBot.fillUnderlights(green);
