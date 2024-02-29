@@ -13,6 +13,14 @@ public class mainProcess {
 
     public static void main(String[] args) throws InterruptedException, IOException {
 
+        class invalidInput {
+            static void invalidInputMessage() throws InterruptedException {
+                System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
+                Thread.sleep(200);
+                System.out.println("Please scan QR code.\n");
+            }
+        }
+
         System.out.println("---------------------------------------\nDRAW SHAPE PROGRAM     By: Shihab Marey\n---------------------------------------");
         Thread.sleep(1000);
         System.out.println("\nLoading API...");
@@ -73,28 +81,27 @@ public class mainProcess {
                 System.out.println("Found QR code.");
 
                 if (parts.length < 2) {
-                    System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
-                    Thread.sleep(200);
-                    System.out.println("Please scan QR code.\n");
+                    invalidInput.invalidInputMessage();
                     continue; // continue scanning
                 } else if (parts.length > 2 && parts.length != 4) {
-                    System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
-                    Thread.sleep(200);
-                    System.out.println("Please scan QR code.\n");
+                    invalidInput.invalidInputMessage();
+                    continue; // continue scanning
                 }
 
                 // Checking if the first letter has a length of more than 1
                 if (parts[0].length() > 1) {
-                    System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
+                    invalidInput.invalidInputMessage();
                     continue; // continue scanning
                 }
 
                 // checking values if there are 2
                 if (parts.length == 2) {
                     if (parts[0].length() > 1 || parts[1].length() != 2) {
-                        System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
-                        Thread.sleep(200);
-                        System.out.println("Please scan QR code.\n");
+                        invalidInput.invalidInputMessage();
+                        continue; // continue scanning
+                    }
+                    if (!(parts[0] instanceof String) || (parts[1] instanceof String)) {
+                        invalidInput.invalidInputMessage();
                         continue; // continue scanning
                     }
                 }
@@ -102,21 +109,16 @@ public class mainProcess {
                 // checking values if there are 4
                 if (parts.length == 4) {
                     if (parts[0].length() > 1) {
-                        System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
-                        Thread.sleep(200);
-                        System.out.println("Please scan QR code.\n");
+                        invalidInput.invalidInputMessage();
                         continue; // continue scanning
                     }
                     for (int i = 1; i < parts.length; i++) {
-                        if (parts[i].length() != 2) {
-                            System.out.println("\u001B[33m" + "Please provide a valid input." + "\u001B[0m");
-                            Thread.sleep(200);
-                            System.out.println("Please scan QR code.\n");
+                        if (parts[i].length() != 2 || !(parts[0] instanceof String) || (parts[i] instanceof String)) {
+                            invalidInput.invalidInputMessage();
                             continue; // continue scanning
                         }
                     }
                 }
-                
 
                 int side1 = Integer.valueOf(parts[1]);
 
