@@ -33,7 +33,7 @@ public class draw {
             }
 
             try {
-                FileWriter fileWriter = new FileWriter(file);
+                FileWriter fileWriter = new FileWriter(file, true);
                 fileWriter.write("S " + totalTime/1000 + " " + sideLength + " 0 0 \n");
                 fileWriter.close();
             } catch (IOException exception) {
@@ -103,7 +103,7 @@ public class draw {
         }
 
         try {
-            FileWriter fileWriter = new FileWriter(file);
+            FileWriter fileWriter = new FileWriter(file, true);
             fileWriter.write("T " + totalTime/1000 + " " + side1 + " " + side2 + " " + side3 + "\n");
             fileWriter.close();
         } catch (IOException exception) {
