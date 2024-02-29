@@ -80,7 +80,7 @@ public class mainProcess {
 
                 switch(shape) {
                     case "S" -> {
-                        System.out.println("Drawing square. Side Length: " + side1);
+                        System.out.println("Drawing square. Side Length: " + parts);
                         draw.drawSquare(swiftBot, file, side1);
                         System.out.println("Scanning for QR code\n");
                     }
@@ -96,7 +96,7 @@ public class mainProcess {
                     }
 
                     default -> {
-                        System.out.println("Invalid shape type: " + parts[0]);
+                        System.out.println("\u001B[31m" + "Invalid Shape Type." + parts[0] + "\u001B[0m");
                     }
                 }
             }
