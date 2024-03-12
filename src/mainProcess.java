@@ -264,22 +264,33 @@ public class mainProcess {
     }
 
     public static boolean checkInput(String[] input) {
-
-        if (input[0] != "S" || input[1] != "T") {
+        if (input.length < 2 || input.length > 4) {
             return false;
         }
 
-        if (input.length > 2) {
-            if ((input[1] instanceof String) || (input[2] instanceof String) || (input[3] instanceof String)) {
-                return false;
-            }
-        } else if (input.length == 2) {
-            if ((input[1] instanceof String)) {
+        if (input[0].length() != 1 || (input[0].charAt(0) != 'S' && input[0].charAt(0) != 'T')) {
+            return false;
+        }
+
+        for (int i = 1; i < input.length; i++) {
+            if (!validateNumber(input[i])) {
                 return false;
             }
         }
 
         return true;
+    }
+
+    public static boolean validateNumber(String input) {
+        if (input.length() != 2) {
+            return false;
+        }
+        try {
+            int num = Integer.parseInt(input);
+            return num >= 15 && num <= 85;
+        } catch (NumberFormatException exception) {
+            return false;
+        }
     }
 
     public static void terminate() throws InterruptedException {
